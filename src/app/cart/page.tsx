@@ -139,6 +139,7 @@ const Page = () => {
                               <Button
                                 aria-label='remove product'
                                 onClick={() =>
+                                      // @ts-expect-error context already passed from express middleware
                                   removeItem(product.id)
                                 }
                                 variant='ghost'>
@@ -198,7 +199,7 @@ const Page = () => {
               </div>
             </div>
             <div className='mt-6'>
-            <QrCodeButton />
+
               <Button
                 disabled={true}
                 // disabled={items.length === 0 || isLoading}
