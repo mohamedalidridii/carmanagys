@@ -89,7 +89,7 @@ const Page = () => {
                   const label = PRODUCT_CATEGORIES.find(
                     (c) => c.value === product.category
                   )?.label
-
+    // @ts-expect-error context already passed from express middleware
                   const { image } = product.images[0].image
 
                   return (
