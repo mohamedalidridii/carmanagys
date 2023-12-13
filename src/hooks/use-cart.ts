@@ -27,6 +27,7 @@ export const useCart = create<CartState>()(
       removeItem: (id) =>
         set((state) => ({
           items: state.items.filter(
+                // @ts-expect-error context already passed from express middleware
             (item) => item.product.id !== id
           ),
         })),

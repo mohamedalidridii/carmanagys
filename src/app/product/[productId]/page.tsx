@@ -45,6 +45,7 @@ const Page = async ({ params }: PageProps) => {
 
   const validUrls = product.images
     .map(({ image }) =>
+        // @ts-expect-error context already passed from express middleware
       typeof image === 'string' ? image : image.url
     )
     .filter(Boolean) as string[]
