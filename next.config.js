@@ -1,4 +1,21 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+	images: {
+		remotePatterns: [
+			{
+				protocol: "http",
+				hostname: "localhost",
+			},
+			{
+				protocol: "https",
+				hostname: "digitalhippo-production.up.railway.app",
+			},
+			{
+				protocol: "https",
+				hostname: "api.qrserver.com",
+			  },
+		],
+	},
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
