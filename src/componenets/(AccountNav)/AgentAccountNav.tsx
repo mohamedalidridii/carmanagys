@@ -9,7 +9,7 @@ import { DropdownMenuContent,
     DropdownMenu, 
     DropdownMenuSeparator, } from "@/components/ui/dropdown-menu"
 import { useAuth } from "@/hooks/user-auth"
-import Link from "next/link"
+import Link from 'next/link'
 
 
 const AgentAccountNav = ({user}: {user: User}) => {
@@ -29,7 +29,7 @@ const AgentAccountNav = ({user}: {user: User}) => {
             
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
-                <Link href="/sell">Client Profile</Link>
+                <Link href="/dashbord">Profile Agent</Link>
             </DropdownMenuItem>
             <DropdownMenuItem className="cursor-pointer">
             </DropdownMenuItem>

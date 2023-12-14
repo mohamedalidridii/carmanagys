@@ -1,9 +1,7 @@
 import dotenv from 'dotenv'
 import path from 'path'
 import payload, { Payload } from 'payload'
-
 import type { InitOptions } from 'payload/config'
-
 import nodemailer  from 'nodemailer'
 
 dotenv.config({

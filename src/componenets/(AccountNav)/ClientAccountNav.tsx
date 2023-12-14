@@ -29,7 +29,7 @@ const ClientAccountNav = ({user}: {user: User}) => {
             
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
-                <Link href="/sell">Tableau de bord</Link>
+                <Link href="/dashbord">Tableau de bord</Link>
             </DropdownMenuItem>
             <DropdownMenuItem className="cursor-pointer">
             </DropdownMenuItem>
