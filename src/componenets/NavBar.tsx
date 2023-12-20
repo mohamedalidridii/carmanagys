@@ -8,6 +8,12 @@ import { getServerSideUser } from "@/lib/payload-utils"
 import { cookies } from "next/headers"
 import ClientAccountNav from "./(AccountNav)/ClientAccountNav"
 import QrCodeButton from "./QrCodeButton"
+import MobileNav from "./(AccountNav)/MobileNavBar"
+import AgentAccountNav from "./(AccountNav)/AgentAccountNav"
+import AdminAccountNav from "./(AccountNav)/AdminAccountNav"
+import MobileNavClient from "./(AccountNav)/MobileNavBarClient"
+import MobileNavAgent from "./(AccountNav)/AgentAccountNav"
+import MobileNavAdmin from "./(AccountNav)/AdminAccountNav"
 
 
 const NavBar = async () => {
@@ -21,8 +27,20 @@ const NavBar = async () => {
             <header className="relative bg-white">
                 <MaxWidthWrapper>
                     <div className="border-b border-gray-200">
-                        <div className="flex h-16 items-center">
-                            {/*TODO:Mobile Navigation */}
+                        <div className="flex h-16 items-center justify-between">
+                            
+                            {user?.role !== 'client' && 'admin' && 'agent'? (
+                                    <MobileNav/>
+                                    ): null}
+                            {user?.role === 'client'? (
+                                    <MobileNavClient user={user}/>
+                                    ): null}
+                            {user?.role === 'agent'? (
+                                    <MobileNavAgent user={user}/>
+                                    ): null}
+                            {user?.role === 'admin'? (
+                                    <MobileNavAdmin user={user}/>
+                                    ): null}
 
                             <div className="ml-4 flex lg:ml-0">
                                 <Link href='/'>
@@ -52,9 +70,15 @@ const NavBar = async () => {
                                             aria-hidden='true'/>
                                             )}
 
-                                    { user && user?.role === 'client'? (<div className="flex">
+                                    { user?.role === 'client'? (<div className="flex justify-center items-center">
                                         <QrCodeButton user={user} />
                                         <ClientAccountNav user={user}/>
+                                        </div>): null }
+                                    { user?.role === 'agent'? (<div className="flex">
+                                        <AgentAccountNav user={user}/>
+                                        </div>): null }
+                                    { user?.role === 'admin'? (<div className="flex">
+                                        <AdminAccountNav user={user}/>
                                         </div>): null }
                                         
                                         { user ? null : (<Link href='/sign-up'

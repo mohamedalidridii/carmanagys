@@ -2,7 +2,7 @@ import {Access, CollectionConfig } from "payload/types";
 
 
 const yourOwn: Access = ({req: {user}}) => {
-    if(user.role === 'Client') return true
+    if(user.role === 'agent' && 'admin' && 'topadmin') return true
 
     return {
         user: {
@@ -26,34 +26,39 @@ export const Orders: CollectionConfig = {
     },
     fields:[
         {
-            name: "_isPaid",
-            type: "checkbox",
+            name: "userId",
+            type: "text",
             access: {
                 read: ({req}) => req.user.role === 'admin' || req.user.role === 'client',
-                create: () => false,
-                update: () => false,
-            },
-            admin: {
-                hidden: true,
+                create: ({req}) => req.user.role === 'admin',
+
             },
             required: true,
         },
         {
-            name: 'client',
-            type: "relationship",
-            admin: {
-                hidden: true,
-            },
-            relationTo: "users",
+            name: 'agent',
+            type: "text",
             required: true,
         },
         {
-            name: 'products',
-            type: "relationship",
-            
-            relationTo: "products",
+            name: 'produit',
+            type: "text",
             required: true,
-            hasMany: true,
+        },
+        {
+            name: 'lubrifiant',
+            type: "text",
+            required: true,
+        },
+        {
+            name: 'points',
+            type: "text",
+            required: true,
+        },
+        {
+            name: 'total',
+            type: "text",
+            required: true,
         },
     ]
 }

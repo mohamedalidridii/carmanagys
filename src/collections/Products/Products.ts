@@ -8,7 +8,12 @@ export const Products: CollectionConfig = {
         useAsTitle: "name",
 
     },
-    access:{},
+    access:{
+        read: ({req}) => req.user.role === 'topadmin',
+        update: ({req}) => req.user.role === 'topadmin',
+        create: ({req}) => req.user.role === 'topadmin',
+        delete: ({req}) => req.user.role === 'topadmin',
+    },
     fields: [
         {name: "user",
             type: "relationship",

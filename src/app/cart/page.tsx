@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import QrCodeButton from '@/componenets/QrCodeButton'
 import {User} from "@/cms-types"
+
 const Page = () => {
 
   

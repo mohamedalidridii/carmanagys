@@ -2,15 +2,21 @@
 
 import { PRODUCT_CATEGORIES } from '@/config'
 import { Menu, X } from 'lucide-react'
+
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { User } from "@/cms-types"
 import { useAuth } from "@/hooks/user-auth"
+import { DropdownMenuContent, 
+  DropdownMenuItem, 
+  DropdownMenuTrigger, 
+  DropdownMenu, 
+  DropdownMenuSeparator, } from "@/components/ui/dropdown-menu"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import QrCodeButton from '../QrCodeButton'
-
-const MobileNavAgent = ({user}: {user: User}) => {
+const MobileNavClient = ({user}: {user: User}) => {
   function capitalizeFirstLetter(str: string): string {
         
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -70,10 +76,11 @@ const MobileNavAgent = ({user}: {user: User}) => {
             
 
             <div className='space-y-6 border-t border-gray-200 px-4 py-6'>
-              <div className='flex flex-col content-center'>
+              <div className='flex flex-col items-center gap-15 '>
+              <Badge className="flex justify-center gap-15">{capitalizeFirstLetter(user.role)}</Badge>
                 <Link
                   onClick={() => closeOnCurrent('/sign-in')}
-                  href='/dashbord-Agent'
+                  href='/dashbord'
                   >
                   <Button className='w-fill'>Tableau de bord</Button>
                 </Link>
@@ -94,4 +101,4 @@ const MobileNavAgent = ({user}: {user: User}) => {
   )
 }
 
-export default MobileNavAgent
+export default MobileNavClient

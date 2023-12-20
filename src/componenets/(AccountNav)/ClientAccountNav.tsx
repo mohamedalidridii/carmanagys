@@ -14,6 +14,11 @@ import Link from "next/link"
 
 const ClientAccountNav = ({user}: {user: User}) => {
     
+    function capitalizeFirstLetter(str: string): string {
+        
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
+
     const {signOut} = useAuth()
     return <DropdownMenu>
         <DropdownMenuTrigger asChild className="overflow-visible">
@@ -23,13 +28,13 @@ const ClientAccountNav = ({user}: {user: User}) => {
             <div className="flex items-center justify-center gap-5 p-2">
                 <div className="flex flex-col space-y-0.5 leading-none gap-2">
                     <Badge variant="outline" className="flex justify-center">{user.email}</Badge>
-                    <Badge className="flex justify-center">{user.role}</Badge>
+                    <Badge className="flex justify-center">{capitalizeFirstLetter(user.role)}</Badge>
                 </div>
             </div>
             
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
-                <Link href="/dashbord">Tableau de bord</Link>
+                <Link href={`/user/${user.id}`}>Tableau de bord</Link>
             </DropdownMenuItem>
             <DropdownMenuItem className="cursor-pointer">
             </DropdownMenuItem>

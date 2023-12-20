@@ -22,14 +22,14 @@ const generate = () =>{
  return (
   <Dialog >
     <DialogTrigger asChild>
-      <Button className="w-full" onClick={generate}>
+      <Button onClick={generate} variant="ghost">
         Votre QRCode
       </Button>
     </DialogTrigger>
     <DialogContent className="sm:max-w-[425px] justify-center flex flex-col">
-      <DialogHeader>
+      <DialogHeader className="flex items-center">
         <DialogTitle>Scan Qr Code</DialogTitle>
-        <Image src={src} alt="this is qrcode" width={100} height={100} />
+        <Image src={src} alt="this is qrcode" width={200} height={200} />
       </DialogHeader>
     </DialogContent>
   </Dialog>

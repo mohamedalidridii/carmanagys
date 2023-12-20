@@ -1,19 +1,20 @@
 import { getPayloadClient } from "../get-payload";
 import { publicProcedure, router } from "./trpc"; 
-import { AuthCredentialsValidator } from "../lib/validators/account-credentials-validator";
+import { AuthLoginValidator, AuthSignupValidator } from "../lib/validators/account-credentials-validator";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import payload from "payload";
+import  {OrdersValidator}  from "../lib/validators/ordersValidator";
 
 
 
 export const authRouter = router({
-
+    
     createPayloadUser: publicProcedure
-    .input(AuthCredentialsValidator)
+    .input(AuthSignupValidator)
     .mutation(async ({ input }) => {
         const {email,
-            password,
+            password, nom, prenom, matricule, tel, marque, type, carburant, kilometrage,
                  }= input
         const payload = await getPayloadClient()
 
@@ -37,6 +38,7 @@ export const authRouter = router({
                 email,
                 password,
                 role: "client",
+                nom, prenom, tel, matricule, marque, type, carburant, kilometrage, 
             },
         })
 
@@ -57,7 +59,7 @@ export const authRouter = router({
         return {success: true}
     }),
 
-    signIn: publicProcedure.input(AuthCredentialsValidator).mutation( async ({input, ctx}) => {
+    signIn: publicProcedure.input(AuthLoginValidator).mutation( async ({input, ctx}) => {
         const {email, password} = input
         const {res} =ctx
         
@@ -79,6 +81,21 @@ export const authRouter = router({
         }
     
     
+    }),
+
+    createOrder: publicProcedure
+    .input(OrdersValidator)
+    .mutation( async ({ input }) =>{
+        const {userId,
+            agent, produit, lubrifiant, points, total
+                 }= input
+        const payload = await getPayloadClient()
+        await payload.create({
+            collection:"orders",
+            data:{
+                userId,
+                agent, produit, lubrifiant, points, total
+            },
+        })
     })
-    
 })

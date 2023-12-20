@@ -5,7 +5,7 @@ import { Button, buttonVariants } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
-import { AuthCredentialsValidator, TAuthCredentialsValidator } from "@/lib/validators/account-credentials-validator"
+import { AuthSignupValidator, TAuthCredentialsValidator, TCarMenu, carMenu, mappedCarList } from "@/lib/validators/account-credentials-validator"
 import { trpc } from "@/trpc/client"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { ArrowRight } from "lucide-react"
@@ -14,14 +14,31 @@ import { useRouter } from "next/navigation"
 import {useForm} from 'react-hook-form'
 import {toast} from 'sonner'
 import { ZodError } from "zod"
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+  } from "@/components/ui/select"
+import { CARS_LIST } from "@/config"
+
+  interface Car {
+    brand: string;
+  }
+  
+    
+
 
 const Page = ( ) => {
+
+
     const {
         register,
         handleSubmit,
         formState: {errors},
      } = useForm<TAuthCredentialsValidator>({
-        resolver: zodResolver(AuthCredentialsValidator),
+        resolver: zodResolver(AuthSignupValidator),
      })
      const router = useRouter()
 
@@ -45,15 +62,18 @@ const Page = ( ) => {
      })
      const onSubmit = ({
             email,
-
-            password,
+            password, nom, prenom, tel, matricule, marque, type, carburant, kilometrage,
             }: TAuthCredentialsValidator) => {
                 mutate({
                     email,
-                    password,
+                    password, nom, prenom, tel, matricule, marque, type, carburant, kilometrage
                 })
      }
-
+     const optionsCarList = Object.entries(mappedCarList).map(
+        ([value, label]) => {
+            <option value={value} key={value}>{label}</option>
+        }
+     )
     return <>
     <div className="container relative flex pt-20 flex-col items-center justify-center lg:px-0">
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
@@ -83,45 +103,111 @@ const Page = ( ) => {
                                 {errors.email.message}
                                 </p>
                             )}
-
                         </div>
                         <div className="flex gap-3">
                             <div className="grid gap-1 py-2">
-                                <Label htmlFor="Nom">Nom</Label>
-                                <Input className={cn({
+                                <Label htmlFor="nom">Nom</Label>
+                                <Input {...register("nom")}
+                                className={cn({
                                     "focus-visible:ring-red-500": true
                                 })}
                                 placeholder="Nom"
                                 /></div>
                             <div className="grid gap-1 py-2">
-                            <Label htmlFor="Nom">Prenom</Label>
-                            <Input className={cn({
-                                "focus-visible:ring-red-500": true
+                            <Label htmlFor="prenom">Prenom</Label>
+                            <Input {...register("prenom")}
+                            className={cn({
+                                "focus-visible:ring-red-500": errors.prenom,
                             })}
-                            placeholder="Prénom"
+                            placeholder="Prenom"
                             />
                             </div>
                         </div>
                         <div className="grid gap-1 py-2">
-                            <Label htmlFor="Matricule">Matricule</Label>
-                            <Input 
+                            <Label htmlFor="tel">Numero de telephone:</Label>
+                            <Input {...register("tel")} className={cn({
+                                "focus-visible:ring-red-500": errors.tel
+                            })}
+                            placeholder="Numero Tel"
+                            />
+                        </div>
+                        <div className="grid gap-1 py-2">
+                            <Label htmlFor="matricule">Matricule</Label>
+                            <Input {...register("matricule")}
                             className={cn({
-                                "focus-visible:ring-red-500": true
+                                "focus-visible:ring-red-500": errors.matricule
                             })}
                             placeholder="Matricule"
                             />
                             
                         </div>
                         <div className="grid gap-1 py-2">
-                            <Label htmlFor="Num">Numero telephone:</Label>
-                            <Input className={cn({
-                                "focus-visible:ring-red-500": true
+                            <Label htmlFor="marque">Marque</Label>
+                            <select {...register('marque')}>
+                                {Object.entries(mappedCarList).map(([value, label]) => (
+    <option key={value} value={value}>{label}</option>
+  ))}
+                            </select>
+                            {/* <Input {...register("marque")}
+                            className={cn({
+                                "focus-visible:ring-red-500": errors.marque
                             })}
-                            placeholder="Numero"
+                            placeholder="marque"
+                            /> */}
+                            
+                        <div  className="py-2 hidden">
+                            <Label htmlFor="points">points</Label>
+                            <Input 
+                            className={cn({
+                                "focus-visible:ring-red-500" : false
+                            })}
+                            placeholder="points"
                             />
+                            </div>
+                            {/* <select
+                            className={cn({
+                                "focus-visible:ring-red-500": errors.marque
+                            })}
+                            >
+                              {CARS_LIST.map((car) => (
+                                    <option key={car.value} value={car.value} {...register("marque")}>{car.label.toString()}</option>
+                                        ))}  
+                            </select> */}
+                            
+                            
                         </div>
                         <div className="grid gap-1 py-2">
-                            <Label htmlFor="Mot-de-Passe">Mot de passe</Label>
+                            <Label htmlFor="type">Type</Label>
+                            <Input {...register("type")}
+                            className={cn({
+                                "focus-visible:ring-red-500": errors.type
+                            })}
+                            placeholder="type"
+                            />
+                            
+                        </div>
+                        <div className="grid gap-1 py-2">
+                            <Label htmlFor="carburant">Carburant</Label>
+                            <Input {...register("carburant")}
+                            className={cn({
+                                "focus-visible:ring-red-500": errors.carburant
+                            })}
+                            placeholder="carburant"
+                            />
+                            
+                        </div>
+                        <div className="grid gap-1 py-2">
+                            <Label htmlFor="kilometrage">Kilometrage</Label>
+                            <Input {...register("kilometrage")}
+                            className={cn({
+                                "focus-visible:ring-red-500": errors.kilometrage
+                            })}
+                            placeholder="kilometrage"
+                            />
+                            
+                        </div>
+                        <div className="grid gap-1 py-2">
+                            <Label htmlFor="password">Mot de passe</Label>
                             <Input
                             {...register("password")}
                             type="password"

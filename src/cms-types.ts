@@ -20,6 +20,15 @@ export interface Config {
 export interface User {
   id: number;
   role: 'topadmin' | 'admin' | 'agent' | 'client';
+  nom: string;
+  prenom: string;
+  tel: string;
+  points?: string | null;
+  matricule: string;
+  marque: string;
+  type: string;
+  carburant: string;
+  kilometrage: string;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -44,7 +53,7 @@ export interface Product {
   priceId?: string | null;
   stripeId?: string | null;
   images: {
-    image?: number | Media | null;
+    image: number | Media;
     id?: string | null;
   }[];
   updatedAt: string;
@@ -90,9 +99,12 @@ export interface Media {
 }
 export interface Order {
   id: number;
-  _isPaid: boolean;
-  client: number | User;
-  products: (number | Product)[];
+  userId: string;
+  agent: string;
+  produit: string;
+  lubrifiant: string;
+  points: string;
+  total: string;
   updatedAt: string;
   createdAt: string;
 }

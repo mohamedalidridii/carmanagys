@@ -1,6 +1,4 @@
 'use client'
-
-import { PRODUCT_CATEGORIES } from '@/config'
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -10,7 +8,7 @@ import { useAuth } from "@/hooks/user-auth"
 import { Button } from "@/components/ui/button"
 import QrCodeButton from '../QrCodeButton'
 
-const MobileNavAgent = ({user}: {user: User}) => {
+const MobileNavAdmin = ({user}: {user: User}) => {
   function capitalizeFirstLetter(str: string): string {
         
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -73,7 +71,7 @@ const MobileNavAgent = ({user}: {user: User}) => {
               <div className='flex flex-col content-center'>
                 <Link
                   onClick={() => closeOnCurrent('/sign-in')}
-                  href='/dashbord-Agent'
+                  href='/dashbord'
                   >
                   <Button className='w-fill'>Tableau de bord</Button>
                 </Link>
@@ -83,7 +81,6 @@ const MobileNavAgent = ({user}: {user: User}) => {
                   href='/'
                 >
                     <Button className='w-fill'>Déconnexion</Button>
-                  
                 </Link>
               </div>
             </div>
@@ -94,4 +91,4 @@ const MobileNavAgent = ({user}: {user: User}) => {
   )
 }
 
-export default MobileNavAgent
+export default MobileNavAdmin
