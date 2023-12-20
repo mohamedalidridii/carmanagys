@@ -1,7 +1,7 @@
 "use client"
 
 
-
+import React from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -17,14 +17,12 @@ import { useUser } from "@/hooks/use-client"
 import { useState } from "react"
 import { toast } from "sonner"
 
-
-
-const Page = () => {
+const Page: React.FC<{ searchParams: { id: string } }> = ({ searchParams }: { searchParams: { id: string } }) => {
 
   const { items, removeItem, clearUser } = useUser()
   const router = useRouter()
   const userId = items.map(({ user }) => user.id)
-
+  const id_client = searchParams.id
   const {
       register,
       handleSubmit,
@@ -82,15 +80,17 @@ const Page = () => {
                       <Label htmlFor="idUser" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Id client</Label>
                         <Input 
                         {...register('userId')}
-                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" readOnly value={user.id}/>
+                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                         readOnly value={id_client}/>
                     
                        
                     </div>
                     <div>
-                        <Label htmlFor="agent" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom d&apos;Agent</Label>
+                        <Label htmlFor="agent" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">id Agent</Label>
                         <Input
                          {...register('agent')}
-                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                         readOnly value={user.id}/>
                     </div>
                     <div>
                         <Label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Produit</Label>

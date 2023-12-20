@@ -10,7 +10,7 @@ const AddClientOrder = ({
 }: {
   user: User,
 }) => {
-  const { addItem } = useUser()
+  const { addItem, clearUser, } = useUser()
   const [isSuccess, setIsSuccess] = useState<boolean>(false)
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const AddClientOrder = ({
     return () => clearTimeout(timeout)
   }, [isSuccess])
 
-  return (
+  return (<div>
     <Button
       onClick={() => {
         addItem(user)
@@ -29,8 +29,20 @@ const AddClientOrder = ({
       }}
       size='lg'
       className='w-full'>
-      {isSuccess ? "Client Vérifier" : "Vérifier"}
+        {isSuccess ? "annulation" : "Vérifier"}
     </Button>
+    <div className='mt-5'> 
+    <Button
+    onClick={() => {
+      clearUser()
+      setIsSuccess(true)
+    }}
+    size='lg'
+    className='w-full'>
+    {isSuccess ? "annulation" : "Vérifier"}
+  </Button>
+  </div>
+  </div>
   )
 }
 
