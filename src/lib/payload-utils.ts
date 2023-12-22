@@ -5,8 +5,10 @@ import { User } from '../cms-types'
 
 
 export const getServerSideUser = async (
+    
     cookies: NextRequest["cookies"] | ReadonlyRequestCookies
     ) => {
+        console.log('server is working')
         const token = cookies.get("payload-token")?.value
         
         const meRes = await fetch(
