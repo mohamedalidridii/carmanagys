@@ -1,5 +1,5 @@
 import express from 'express'
-import { nextApp, nextHandler } from './app/next-utils';
+import { nextApp, nextHandler } from './next-utils';
 import { getPayloadClient } from './get-payload';
 import * as trpcExpress from '@trpc/server/adapters/express'
 import { appRouter } from './trpc';
@@ -38,6 +38,7 @@ app.use(
 )
 
 app.use((req,res)=> nextHandler(req, res))
+
 nextApp.prepare().then(() => {
     payload.logger.info('Next.js started')
 
