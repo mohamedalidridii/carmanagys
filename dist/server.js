@@ -77,37 +77,48 @@ var createContext = function (_a) {
     });
 };
 var start = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var payload;
+    var payload_1, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, (0, get_payload_1.getPayloadClient)({
-                    initOptions: {
-                        express: app,
-                        onInit: function (cms) { return __awaiter(void 0, void 0, void 0, function () {
-                            return __generator(this, function (_a) {
-                                cms.logger.info("Admin URL is ".concat(cms.getAdminURL()));
-                                return [2 /*return*/];
-                            });
-                        }); },
-                    },
-                })];
+            case 0:
+                _a.trys.push([0, 3, , 4]);
+                // Build Next.js app before starting the server
+                return [4 /*yield*/, next_utils_1.nextApp.prepare()];
             case 1:
-                payload = _a.sent();
+                // Build Next.js app before starting the server
+                _a.sent();
+                return [4 /*yield*/, (0, get_payload_1.getPayloadClient)({
+                        initOptions: {
+                            express: app,
+                            onInit: function (cms) { return __awaiter(void 0, void 0, void 0, function () {
+                                return __generator(this, function (_a) {
+                                    cms.logger.info("Admin URL is ".concat(cms.getAdminURL()));
+                                    return [2 /*return*/];
+                                });
+                            }); },
+                        },
+                    })];
+            case 2:
+                payload_1 = _a.sent();
                 app.use('/api/trpc', trpcExpress.createExpressMiddleware({
                     router: trpc_1.appRouter,
                     createContext: createContext,
                 }));
                 app.use(function (req, res) { return (0, next_utils_1.nextHandler)(req, res); });
-                next_utils_1.nextApp.prepare().then(function () {
-                    payload.logger.info('Next.js started');
-                    app.listen(PORT, function () { return __awaiter(void 0, void 0, void 0, function () {
-                        return __generator(this, function (_a) {
-                            payload.logger.info("Next.js App URL: ".concat(process.env.NEXT_PUBLIC_SERVER_URL));
-                            return [2 /*return*/];
-                        });
-                    }); });
-                });
-                return [2 /*return*/];
+                payload_1.logger.info('Next.js started');
+                app.listen(PORT, function () { return __awaiter(void 0, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
+                        payload_1.logger.info("Next.js App URL: ".concat(process.env.NEXT_PUBLIC_SERVER_URL));
+                        return [2 /*return*/];
+                    });
+                }); });
+                return [3 /*break*/, 4];
+            case 3:
+                error_1 = _a.sent();
+                console.error('Error starting the server:', error_1);
+                process.exit(1);
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
         }
     });
 }); };
