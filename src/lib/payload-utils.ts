@@ -1,7 +1,6 @@
 import {ReadonlyRequestCookies} from "next/dist/server/web/spec-extension/adapters/request-cookies"
 import { NextRequest } from "next/server"
 import { User } from '../cms-types'
-import { NextApiRequest, NextApiResponse } from 'next';
 
 
 export const getServerSideUser = async (
