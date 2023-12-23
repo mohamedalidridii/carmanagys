@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	// strictMode: true,
 	images: {
 		remotePatterns: [
 			{
@@ -8,8 +7,8 @@ const nextConfig = {
 				hostname: "localhost",
 			},
 			{
-				protocol: "https",
-				hostname: "carmanagys-medalidridi-koyotechnolo.vercel.app",
+				protocol: "http",
+				hostname: "car-managys.com",
 			},
 			{
 				protocol: "https",
@@ -19,4 +18,4 @@ const nextConfig = {
 	},
 };
 
-module.exports = nextConfig;
+export default nextConfig;
