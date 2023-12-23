@@ -2,6 +2,7 @@ import { appRouter } from "@/trpc"
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch'
 
 const handler = (req: Request) => {
+  console.log('this is an api request')
   fetchRequestHandler({
     endpoint: '/api/trpc',
     req,
