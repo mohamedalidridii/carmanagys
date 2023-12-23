@@ -8,7 +8,7 @@ export const getServerSideUser = async (
     
     cookies: NextRequest["cookies"] | ReadonlyRequestCookies
     ) => {
-        console.log('server is working')
+        console.log('server is working correctly')
         const token = cookies.get("payload-token")?.value
         
         const meRes = await fetch(
