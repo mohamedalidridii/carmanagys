@@ -1,3 +1,4 @@
+"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -56,19 +57,24 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-import { publicProcedure, router } from "./trpc.js";
-import { authRouter } from "./auth-router.js";
-import z from "zod";
-import { QueryValidator } from "../lib/validators/query-validator.js";
-import { getPayloadClient } from "../get-payload.js";
-import { paymentRouter } from "./payment-router.js";
-export var appRouter = router({
-    auth: authRouter,
-    payment: paymentRouter,
-    getInfiniteProducts: publicProcedure.input(z.object({
-        limit: z.number().min(1).max(100),
-        cursor: z.number().nullish(),
-        query: QueryValidator
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.appRouter = void 0;
+var trpc_1 = require("./trpc");
+var auth_router_1 = require("./auth-router");
+var zod_1 = __importDefault(require("zod"));
+var query_validator_1 = require("../lib/validators/query-validator");
+var get_payload_1 = require("../get-payload");
+var payment_router_1 = require("./payment-router");
+exports.appRouter = (0, trpc_1.router)({
+    auth: auth_router_1.authRouter,
+    payment: payment_router_1.paymentRouter,
+    getInfiniteProducts: trpc_1.publicProcedure.input(zod_1.default.object({
+        limit: zod_1.default.number().min(1).max(100),
+        cursor: zod_1.default.number().nullish(),
+        query: query_validator_1.QueryValidator
     }))
         .query(function (_a) {
         var input = _a.input;
@@ -79,7 +85,7 @@ export var appRouter = router({
                     case 0:
                         query = input.query, cursor = input.cursor;
                         sort = query.sort, limit = query.limit, queryOpts = __rest(query, ["sort", "limit"]);
-                        return [4 /*yield*/, getPayloadClient()];
+                        return [4 /*yield*/, (0, get_payload_1.getPayloadClient)()];
                     case 1:
                         payload = _c.sent();
                         parsedQueryOpts = {};

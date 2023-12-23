@@ -1,3 +1,27 @@
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,12 +58,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import express from 'express';
-import { nextApp, nextHandler } from './next-utils.js';
-import { getPayloadClient } from './get-payload.js';
-import * as trpcExpress from '@trpc/server/adapters/express';
-import { appRouter } from './trpc/index.js';
-var app = express();
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = __importDefault(require("express"));
+var next_utils_1 = require("./next-utils");
+var get_payload_1 = require("./get-payload");
+var trpcExpress = __importStar(require("@trpc/server/adapters/express"));
+var trpc_1 = require("./trpc");
+var app = (0, express_1.default)();
 var PORT = Number(process.env.PORT) || 3000;
 var createContext = function (_a) {
     var req = _a.req, res = _a.res;
@@ -52,7 +80,7 @@ var start = function () { return __awaiter(void 0, void 0, void 0, function () {
     var payload;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, getPayloadClient({
+            case 0: return [4 /*yield*/, (0, get_payload_1.getPayloadClient)({
                     initOptions: {
                         express: app,
                         onInit: function (cms) { return __awaiter(void 0, void 0, void 0, function () {
@@ -66,11 +94,11 @@ var start = function () { return __awaiter(void 0, void 0, void 0, function () {
             case 1:
                 payload = _a.sent();
                 app.use('/api/trpc', trpcExpress.createExpressMiddleware({
-                    router: appRouter,
+                    router: trpc_1.appRouter,
                     createContext: createContext,
                 }));
-                app.use(function (req, res) { return nextHandler(req, res); });
-                nextApp.prepare().then(function () {
+                app.use(function (req, res) { return (0, next_utils_1.nextHandler)(req, res); });
+                next_utils_1.nextApp.prepare().then(function () {
                     payload.logger.info('Next.js started');
                     app.listen(PORT, function () { return __awaiter(void 0, void 0, void 0, function () {
                         return __generator(this, function (_a) {

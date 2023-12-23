@@ -1,5 +1,8 @@
-import { PRODUCT_CATEGORIES } from "../../config";
-export var Products = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Products = void 0;
+var config_1 = require("../../config");
+exports.Products = {
     slug: "products",
     admin: {
         useAsTitle: "name",
@@ -51,7 +54,7 @@ export var Products = {
         { name: "category",
             label: 'Categories',
             type: "select",
-            options: PRODUCT_CATEGORIES.map(function (_a) {
+            options: config_1.PRODUCT_CATEGORIES.map(function (_a) {
                 var label = _a.label, value = _a.value;
                 return ({ label: label, value: value });
             }),

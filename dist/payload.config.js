@@ -1,25 +1,30 @@
-import { buildConfig } from "payload/config";
-import { postgresAdapter } from '@payloadcms/db-postgres';
-import { slateEditor } from '@payloadcms/richtext-slate';
-import { webpackBundler } from "@payloadcms/bundler-webpack";
-import path from "path";
-import { Users } from "./collections/Users";
-import dotenv from "dotenv";
-import { Products } from "./collections/Products/Products";
-import { Media } from "./collections/Media";
-import { Orders } from "./collections/Orders";
-dotenv.config({
-    path: path.resolve(__dirname, "../.env"),
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var config_1 = require("payload/config");
+var db_postgres_1 = require("@payloadcms/db-postgres");
+var richtext_slate_1 = require("@payloadcms/richtext-slate");
+var bundler_webpack_1 = require("@payloadcms/bundler-webpack");
+var path_1 = __importDefault(require("path"));
+var Users_1 = require("./collections/Users");
+var dotenv_1 = __importDefault(require("dotenv"));
+var Products_1 = require("./collections/Products/Products");
+var Media_1 = require("./collections/Media");
+var Orders_1 = require("./collections/Orders");
+dotenv_1.default.config({
+    path: path_1.default.resolve(__dirname, "../.env"),
 });
-export default buildConfig({
+exports.default = (0, config_1.buildConfig)({
     serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
-    collections: [Users, Products, Media, Orders],
+    collections: [Users_1.Users, Products_1.Products, Media_1.Media, Orders_1.Orders],
     routes: {
         admin: '/sell'
     },
     admin: {
         user: "users",
-        bundler: webpackBundler(),
+        bundler: (0, bundler_webpack_1.webpackBundler)(),
         meta: {
             titleSuffix: '- Digital',
             favicon: "/favicon.ico",
@@ -29,13 +34,13 @@ export default buildConfig({
     rateLimit: {
         max: 2000,
     },
-    editor: slateEditor({}),
-    db: postgresAdapter({
+    editor: (0, richtext_slate_1.slateEditor)({}),
+    db: (0, db_postgres_1.postgresAdapter)({
         pool: {
             connectionString: process.env.DATABASE_URL,
         }
     }),
     typescript: {
-        outputFile: path.resolve(__dirname, "cms-types.ts"),
+        outputFile: path_1.default.resolve(__dirname, "cms-types.ts"),
     }
 });

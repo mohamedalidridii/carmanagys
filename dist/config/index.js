@@ -1,4 +1,7 @@
-export var PRODUCT_CATEGORIES = [
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CARS_LIST = exports.PRODUCT_CATEGORIES = void 0;
+exports.PRODUCT_CATEGORIES = [
     {
         label: "UI kits",
         value: "ui_kits",
@@ -42,7 +45,7 @@ export var PRODUCT_CATEGORIES = [
         ]
     }
 ];
-export var CARS_LIST = [
+exports.CARS_LIST = [
     {
         label: "Audi",
         value: "audi",

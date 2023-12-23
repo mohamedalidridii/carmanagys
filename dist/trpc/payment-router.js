@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,13 +35,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { TRPCError, initTRPC } from "@trpc/server";
-import { z } from "zod";
-import { privateProcedure, router } from "./trpc.js";
-import { getPayloadClient } from "../get-payload.js";
-var t = initTRPC.context().create();
-export var paymentRouter = router({
-    createSession: privateProcedure.input(z.object({ productIds: z.array(z.string()) }))
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.paymentRouter = void 0;
+var server_1 = require("@trpc/server");
+var zod_1 = require("zod");
+var trpc_1 = require("./trpc");
+var get_payload_1 = require("../get-payload");
+var t = server_1.initTRPC.context().create();
+exports.paymentRouter = (0, trpc_1.router)({
+    createSession: trpc_1.privateProcedure.input(zod_1.z.object({ productIds: zod_1.z.array(zod_1.z.string()) }))
         .mutation(function (_a) {
         var ctx = _a.ctx, input = _a.input;
         return __awaiter(void 0, void 0, void 0, function () {
@@ -51,9 +54,9 @@ export var paymentRouter = router({
                         user = ctx.user;
                         productIds = input.productIds;
                         if (productIds.length === 0) {
-                            throw new TRPCError({ code: 'BAD_REQUEST' });
+                            throw new server_1.TRPCError({ code: 'BAD_REQUEST' });
                         }
-                        return [4 /*yield*/, getPayloadClient()];
+                        return [4 /*yield*/, (0, get_payload_1.getPayloadClient)()];
                     case 1:
                         payload = _b.sent();
                         return [2 /*return*/];

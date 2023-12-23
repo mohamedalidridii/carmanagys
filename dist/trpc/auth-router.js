@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,15 +35,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { getPayloadClient } from "../get-payload.js";
-import { publicProcedure, router } from "./trpc.js";
-import { AuthLoginValidator, AuthSignupValidator } from "../lib/validators/account-credentials-validator.js";
-import { TRPCError } from "@trpc/server";
-import { z } from "zod";
-import { OrdersValidator } from "../lib/validators/ordersValidator.js";
-export var authRouter = router({
-    createPayloadUser: publicProcedure
-        .input(AuthSignupValidator)
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.authRouter = void 0;
+var get_payload_1 = require("../get-payload");
+var trpc_1 = require("./trpc");
+var account_credentials_validator_1 = require("../lib/validators/account-credentials-validator");
+var server_1 = require("@trpc/server");
+var zod_1 = require("zod");
+var ordersValidator_1 = require("../lib/validators/ordersValidator");
+exports.authRouter = (0, trpc_1.router)({
+    createPayloadUser: trpc_1.publicProcedure
+        .input(account_credentials_validator_1.AuthSignupValidator)
         .mutation(function (_a) {
         var input = _a.input;
         return __awaiter(void 0, void 0, void 0, function () {
@@ -51,7 +54,7 @@ export var authRouter = router({
                 switch (_b.label) {
                     case 0:
                         email = input.email, password = input.password, nom = input.nom, prenom = input.prenom, matricule = input.matricule, tel = input.tel, marque = input.marque, type = input.type, carburant = input.carburant, kilometrage = input.kilometrage;
-                        return [4 /*yield*/, getPayloadClient()
+                        return [4 /*yield*/, (0, get_payload_1.getPayloadClient)()
                             // check if user already exists
                         ];
                     case 1:
@@ -67,7 +70,7 @@ export var authRouter = router({
                     case 2:
                         users = (_b.sent()).docs;
                         if (users.length !== 0)
-                            throw new TRPCError({ code: 'CONFLICT' });
+                            throw new server_1.TRPCError({ code: 'CONFLICT' });
                         // create user
                         return [4 /*yield*/, payload.create({
                                 collection: "users",
@@ -93,8 +96,8 @@ export var authRouter = router({
             });
         });
     }),
-    verifyEmail: publicProcedure
-        .input(z.object({ token: z.string() }))
+    verifyEmail: trpc_1.publicProcedure
+        .input(zod_1.z.object({ token: zod_1.z.string() }))
         .query(function (_a) {
         var input = _a.input;
         return __awaiter(void 0, void 0, void 0, function () {
@@ -103,7 +106,7 @@ export var authRouter = router({
                 switch (_b.label) {
                     case 0:
                         token = input.token;
-                        return [4 /*yield*/, getPayloadClient()];
+                        return [4 /*yield*/, (0, get_payload_1.getPayloadClient)()];
                     case 1:
                         payload = _b.sent();
                         return [4 /*yield*/, payload.verifyEmail({
@@ -113,13 +116,13 @@ export var authRouter = router({
                     case 2:
                         isVerified = _b.sent();
                         if (!isVerified)
-                            throw new TRPCError({ code: "UNAUTHORIZED" });
+                            throw new server_1.TRPCError({ code: "UNAUTHORIZED" });
                         return [2 /*return*/, { success: true }];
                 }
             });
         });
     }),
-    signIn: publicProcedure.input(AuthLoginValidator).mutation(function (_a) {
+    signIn: trpc_1.publicProcedure.input(account_credentials_validator_1.AuthLoginValidator).mutation(function (_a) {
         var input = _a.input, ctx = _a.ctx;
         return __awaiter(void 0, void 0, void 0, function () {
             var email, password, res, payload, error_1;
@@ -128,7 +131,7 @@ export var authRouter = router({
                     case 0:
                         email = input.email, password = input.password;
                         res = ctx.res;
-                        return [4 /*yield*/, getPayloadClient()];
+                        return [4 /*yield*/, (0, get_payload_1.getPayloadClient)()];
                     case 1:
                         payload = _b.sent();
                         _b.label = 2;
@@ -147,14 +150,14 @@ export var authRouter = router({
                         return [2 /*return*/, { success: true }];
                     case 4:
                         error_1 = _b.sent();
-                        throw new TRPCError({ code: "UNAUTHORIZED" });
+                        throw new server_1.TRPCError({ code: "UNAUTHORIZED" });
                     case 5: return [2 /*return*/];
                 }
             });
         });
     }),
-    createOrder: publicProcedure
-        .input(OrdersValidator)
+    createOrder: trpc_1.publicProcedure
+        .input(ordersValidator_1.OrdersValidator)
         .mutation(function (_a) {
         var input = _a.input;
         return __awaiter(void 0, void 0, void 0, function () {
@@ -163,7 +166,7 @@ export var authRouter = router({
                 switch (_b.label) {
                     case 0:
                         userId = input.userId, agent = input.agent, produit = input.produit, lubrifiant = input.lubrifiant, points = input.points, total = input.total;
-                        return [4 /*yield*/, getPayloadClient()];
+                        return [4 /*yield*/, (0, get_payload_1.getPayloadClient)()];
                     case 1:
                         payload = _b.sent();
                         return [4 /*yield*/, payload.create({

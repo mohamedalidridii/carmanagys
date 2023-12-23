@@ -1,3 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Orders = void 0;
 var yourOwn = function (_a) {
     var user = _a.req.user;
     if (user.role === 'agent' && 'admin' && 'topadmin')
@@ -8,7 +11,7 @@ var yourOwn = function (_a) {
         }
     };
 };
-export var Orders = {
+exports.Orders = {
     slug: 'orders',
     admin: {
         useAsTitle: 'Your Orders',
