@@ -18,12 +18,6 @@ export const getServerSideUser = async (
                 Authorization: `JWT ${token}`,
             },
         })
-        try {
-            const { user } = await meRes.json() as {user: User | null};
-            return { user };
-          } catch (error) {
-            console.error("Error parsing user data:", error);
-            // Handle the error appropriately, e.g., return a default user or throw an error
-          }  
-
+    const {user}= (await meRes.json()) as {user: User | null} 
+    return {user}
 }
