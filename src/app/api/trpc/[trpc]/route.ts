@@ -10,6 +10,7 @@ const handler = (req: Request) => {
     // @ts-expect-error context already passed from express middleware
     createContext: () => ({}),
   })
+  console.log('this is the end of api request')
 }
 
 export { handler as GET, handler as POST }
