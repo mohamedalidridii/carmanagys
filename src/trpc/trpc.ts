@@ -1,4 +1,4 @@
-import { User } from '@/cms-types'
+import { User } from '../cms-types'
 import { ExpressContext } from '@/server'
 import { TRPCError, initTRPC } from '@trpc/server'
 import { PayloadRequest } from 'payload/types'
