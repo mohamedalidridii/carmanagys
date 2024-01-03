@@ -1,50 +1,103 @@
 export const PRODUCT_CATEGORIES =[
     {
-        label: "UI kits",
-        value: "ui_kits" as const,
+        label: "Carburant",
+        value: "carburant" as const,
         featured:[
             {
-                name:"Editors Picks",
+                name:"Diesel",
                 href: '#',
-                imageSrc: '/nav/ui-kits/mixed.jpg',
+                imageSrc: '/nav/Carburant/Diesel-icone.png',
 
             },
             {
-                name:"New Arrivals",
+                name:"Diesel 50",
                 href: '#',
-                imageSrc: '/nav/ui-kits/blue.jpg',
+                imageSrc: '/nav/Carburant/Diesel-50-icone.png',
 
             },
             {
-                name:"Best Sellers",
+                name:"Essance sans Plomb",
                 href: '#',
-                imageSrc: '/nav/ui-kits/purple.jpg',
+                imageSrc: '/nav/Carburant/Essence-sans-plomb-icone.webp',
+
+            },
+            {
+                name:"Essance sans Plomb Plus",
+                href: '#',
+                imageSrc: '/nav/Carburant/Essence-sans-plomb-plus-icone.png',
+
+            },
+            {
+                name:"GPL",
+                href: '#',
+                imageSrc: '/nav/Carburant/gpl-icone.png',
+
+            },
+            {
+                name:"Pétrole",
+                href: '#',
+                imageSrc: '/nav/Carburant/petrole-icone.png',
 
             },
         ]
     },
     {
-        label: "Icons",
-        value: "icons" as const,
+        label: "Commodités",
+        value: "commodités" as const,
         featured:[
             {
-                name:"Favorite Icon Picks",
+                name:"Accessoires",
                 href: '#',
-                imageSrc: '/nav/icons/picks.jpg',
+                imageSrc: '/nav/Commodité/acc_auto-img.png',
 
             },
             {
-                name:"New Arrivals",
+                name:"Eau radiateur",
                 href: '#',
-                imageSrc: '/nav/icons/new.jpg',
+                imageSrc: '/nav/Commodité/eau-radiateur-icone.png',
 
             },
             {
-                name:"Best Selling Icons",
+                name:"Huile voiture",
                 href: '#',
-                imageSrc: '/nav/icons/bestsellers.jpg',
+                imageSrc: '/nav/Commodité/huile_voiture-icone.png',
 
             },
+            // {
+            //     name:"Best Selling Icons",
+            //     href: '#',
+            //     imageSrc: '/nav/icons/bestsellers.jpg',
+
+            // },
+        ]
+    },
+    {
+        label: "Entretien et Réparation",
+        value: "entretientEtReparation" as const,
+        featured:[
+            {
+                name:"Gonflage des pneus",
+                href: '#',
+                imageSrc: '/nav/er/Gonflage-des-pneus-icone.png',
+
+            },
+            {
+                name:"Lavage",
+                href: '#',
+                imageSrc: '/nav/er/Lavage-icone.png',
+
+            },
+            {
+                name:"Vidange",
+                href: '#',
+                imageSrc: '/nav/er/vidange-icone.png',
+            },
+            // {
+            //     name:"Best Selling Icons",
+            //     href: '#',
+            //     imageSrc: '/nav/icons/bestsellers.jpg',
+
+            // },
         ]
     }
 ]

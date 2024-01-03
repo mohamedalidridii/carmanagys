@@ -12,7 +12,6 @@ import ImageSlider from './ImageSlider'
 interface ProductListingProps {
     product: Product | null
     index: number
-
 }
 
 const ProductListing = ({
@@ -20,7 +19,6 @@ const ProductListing = ({
     index
 }: ProductListingProps) =>{
     const [isVisible, setIsVisible] = useState<boolean>(false)
-
     useEffect(() => {
         const timer =setTimeout(() => {
             setIsVisible(true)
@@ -31,13 +29,14 @@ const ProductListing = ({
     if(!product || !isVisible) return <ProductPlaceholder/>
     
     const label = PRODUCT_CATEGORIES.find(
+            // @ts-ignore // context already passed from express middleware
         ({value}) => value === product.category)?.label
     
     const validUrls = product.images.map(({image})=>
     // @ts-ignore // context already passed from express middleware
         typeof image === 'string' ? image : image.url
         ).filter(Boolean) as string[]
-    
+
     if(isVisible && product) {
         return (
             <Link className={cn('invisible h-full w-full cursor-pointer group/main', 
@@ -54,7 +53,6 @@ const ProductListing = ({
             </Link>
             )
 }}
-
 const ProductPlaceholder = () => {
     return (
         <div className='flex flex-col w-full'>
@@ -64,7 +62,7 @@ const ProductPlaceholder = () => {
             <Skeleton className='mt-4 w-2/3 h-4 rounded-lg'/>
             <Skeleton className='mt-2 w-16 h-4 rounded-lg'/>
             <Skeleton className='mt-2 w-12 h-4 rounded-lg'/>
-            
+            <Skeleton className='mt-2 w-12 h-4 rounded-lg'/>
         </div>
     )
 }

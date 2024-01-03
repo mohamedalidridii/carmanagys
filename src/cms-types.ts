@@ -11,7 +11,7 @@ export interface Config {
     users: User;
     products: Product;
     media: Media;
-    orders: Order;
+    operations: Operation;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -23,7 +23,7 @@ export interface User {
   nom: string;
   prenom: string;
   tel: string;
-  points?: string | null;
+  points?: number | null;
   matricule: string;
   marque: string;
   type: string;
@@ -48,7 +48,7 @@ export interface Product {
   name: string;
   description?: string | null;
   price: number;
-  category: 'ui_kits' | 'icons';
+  category: 'carburant' | 'commodités' | 'entretientEtReparation';
   points: number;
   priceId?: string | null;
   stripeId?: string | null;
@@ -97,14 +97,14 @@ export interface Media {
     };
   };
 }
-export interface Order {
+export interface Operation {
   id: number;
   userId: string;
   agent: string;
   produit: string;
   lubrifiant: string;
-  points: string;
-  total: string;
+  pointsadded: number;
+  total: number;
   updatedAt: string;
   createdAt: string;
 }

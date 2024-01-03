@@ -14,7 +14,7 @@ import { parse } from 'url'
 const app = express()
 const PORT = Number(process.env.PORT) || 3000
 
-const createContext = ({
+export const createContext = ({
   req,
   res,
 }: trpcExpress.CreateExpressContextOptions) => ({

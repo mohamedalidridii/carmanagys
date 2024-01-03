@@ -122,7 +122,13 @@ export const carMenu = [
     carburant: z.string(),
     kilometrage : z.string(),
   });
+  export const SendSmsValidator = z.object({
+   
 
+    phoneNumber: z.string(),
+    message : z.string(),
+  });
 export type TAuthCredentialsValidator = z.infer<typeof AuthSignupValidator>
 export type SAuthCredentialsValidator = z.infer<typeof AuthLoginValidator>
+export type XSendSmsValidator = z.infer<typeof SendSmsValidator>
 export type TCarMenu = typeof carMenu[number]

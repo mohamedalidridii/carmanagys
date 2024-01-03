@@ -80,9 +80,9 @@ const MobileNavClient = ({user}: {user: User}) => {
               <Badge className="flex justify-center gap-15">{capitalizeFirstLetter(user.role)}</Badge>
                 <Link
                   onClick={() => closeOnCurrent('/sign-in')}
-                  href='/dashbord'
+                  href={`/user/${user.id}`}
                   >
-                  <Button className='w-fill'>Tableau de bord</Button>
+                  <Button className='w-fill'>Mes Informations</Button>
                 </Link>
                 <QrCodeButton user={user}/>
                 <Link

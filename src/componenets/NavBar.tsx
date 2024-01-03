@@ -29,7 +29,7 @@ const NavBar = async () => {
                     <div className="border-b border-gray-200">
                         <div className="flex h-16 items-center justify-between">
                             
-                            {user?.role !== 'client' && 'admin' && 'agent'? (
+                            {!user? (
                                     <MobileNav/>
                                     ): null}
                             {user?.role === 'client'? (

@@ -15,7 +15,7 @@ const QrCodeButton = ({user}: {user: User}) => {
   const [src, setsrc] = useState<string>('')
 
 const generate = () =>{
-  const qrurl =`https://api.qrserver.com/v1/create-qr-code/?size=84x84&data=${user.id}`
+  const qrurl =`https://api.qrserver.com/v1/create-qr-code/?size=84x84&data=${process.env.NEXT_PUBLIC_SERVER_URL}/user/${user.id}`
   setsrc(qrurl)
 } 
 

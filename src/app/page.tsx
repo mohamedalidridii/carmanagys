@@ -6,32 +6,39 @@ import ProductReel from '@/componenets/ProductReel'
 import Image from "next/image";
 const perks =[
   {
-    name: 'Instant Delivery',
-    Icon: ArrowDownToLine,
-    Description: 'Get your assets delivered to your email in seconds and download them right await'
+    name: 'Distribution de carburant',
+    Icon: CheckCircle,
+    Description: "Car Managys propose une sélection complète de carburants, comprenant l'essence sans plomb, le diesel, le GPL, et d'autres options selon les besoins des conducteurs."
+    
   },
   {
-    name: 'Guaranteed Quality',
+    name: 'Lavage de voitures',
+    Icon: CheckCircle,
+    Description: 'Des installations de lavage modernes permettent aux conducteurs de choisir parmi différents niveaux de nettoyage, du lavage extérieur express au lavage complet intérieur et extérieur.'
+  },
+  {
+    name: 'Boutique de commodités',
     Icon: CheckCircle,
     Description: 'Every asset on the platform is verified by our team to ensure our highest quality standards.'
   },
   {
     name: 'For the Planet',
-    Icon: Leaf,
-    Description: 'We respect the environment protocols to save the Planet'
+    Icon: CheckCircle,
+    Description: "Une sélection soigneusement choisie de produits de première nécessité incluant de la nourriture, des boissons, des snacks, des journaux, ainsi qu'une gamme d'articles automobiles et d'accessoires pratiques."
   }
 ]
 
 export default function Home() {
   return <>
   <section className="bg-white dark:bg-gray-900">
-    <div className="py-8 px-4 mx-auto mt-20 max-w-screen-xl text-center lg:py-20 lg:px-20">
+    <div className="py-8 px-4 mx-auto mt-20 max-w-screen-xl text-center lg:py-10 lg:px-20">
         {/* <Link href="#" className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700" role="alert">
-            <span className="text-xs bg-primary-600 rounded-full text-white px-4 py-1.5 mr-3">New</span> <span className="text-sm font-medium">Flowbite is out! See what's new</span> 
+            <span className="text-xs bg-primary-600 rounded-full text-white px-4 py-1.5 mr-3">New</span> <span className="text-sm font-medium">Flowbite is out! See what&apos;s new</span> 
             <svg className="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
         </Link> */}
-        <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-5xl dark:text-white">Votre station de service de demain est arrivée</h1>
-        <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">la station-service préférée la station de service de demain, où tout est digitalisé et  qui vous simplifie la vie. </p>
+        <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">CAR-MANAGYS</h1>
+        <p className="mb-4 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">Notre station Car Managys est synonyme de fiabilité et d&apos;engagement envers les conducteurs. Nous offrons une gamme complète de carburants, des installations de lavage modernes pour vos véhicules, ainsi qu&apos;une boutique proposant des produits de première nécessité et une sélection d&apos;articles automobiles pratiques.</p>
+        <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">Nos services d&apos;entretien et de réparation sont assurés par des professionnels compétents, garantissant que votre véhicule reste en parfait état de fonctionnement. Nous comprenons l&apos;évolution des besoins des conducteurs, c&apos;est pourquoi nous avons intégré des points de recharge électrique pour les véhicules respectueux de l&apos;environnement.</p>
         <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
             {/* <Link href="#" className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
                 Learn more
@@ -79,10 +86,11 @@ export default function Home() {
 </section>
   <section className="bg-gray-50 dark:bg-gray-900 ">
     <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6 my-auto">
-        <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Qui somme nous? </h2>
-            <p className="mb-4">We are strategists, designers and developers. Innovators and problem solvers. Small enough to be simple and quick, but big enough to deliver the scope you want at the pace you need. Small enough to be simple and quick, but big enough to deliver the scope you want at the pace you need.</p>
-            <p>We are strategists, designers and developers. Innovators and problem solvers. Small enough to be simple and quick.</p>
+        <div className="font-light text-gray-800 sm:text-lg dark:text-gray-400">
+            <h2 className="mb-10 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Pourquoi Nous?</h2>
+            <p className="mb-4"><span className="font-extrabold">Engagement total envers la sécurité :</span>Chez Car Managys, la sécurité est notre priorité absolue. Nous offrons bien plus qu&apos;une simple assistance en cas de panne. Notre équipe est prête à intervenir 24/7 pour garantir votre sécurité sur la route. Des services d&apos;urgence complets, un soutien routier inégalé et une assistance immédiate en cas de besoin font partie intégrante de notre engagement envers vous.</p>
+            <p className="mb-4"><span className="font-extrabold">Confort et commodité à chaque arrêt :</span> Nous redéfinissons l&pos;expérience des stations-service en offrant bien plus que de simples services de ravitaillement. Des installations sanitaires impeccables, des aires de repos confortables et une gamme variée d&pos;options de restauration rapide font de chaque pause chez Car Managys un moment de confort et de détente pour les conducteurs et leurs passagers.</p>
+            <p className="mb-4"><span className="font-extrabold">Innovation et durabilité :</span> Chez Car Managys, nous embrassons l&apos;avenir de la mobilité. Nous avons intégré des points de recharge électrique pour les véhicules respectueux de l&apos;environnement, témoignant de notre engagement envers la durabilité et l&apos;innovation. Nous nous efforçons constamment d&apos;intégrer les dernières avancées technologiques pour répondre aux besoins changeants des conducteurs soucieux de l&pos;environnement.</p>
         </div>
         <div className="grid grid-cols-2 gap-4 mt-8">
             <Image width={500} height={500} className="w-full rounded-lg" src="/car1.jpg" alt="office content 1"/>
@@ -90,6 +98,19 @@ export default function Home() {
         </div>
     </div>
   </section>
+  {/* <section className="bg-white dark:bg-gray-900">
+  <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div className="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+          <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">car-managys</h2>
+          <p className="mb-4 font-light">Track work across the enterprise through an open, collaborative platform. Link issues across Jira and ingest data from other software development tools, so your IT support and operations teams have richer contextual information to rapidly respond to requests, incidents, and changes.</p>
+          <p className="mb-4 font-medium">Deliver great service experiences fast - without the complexity of traditional ITSM solutions.Accelerate critical development work, eliminate toil, and deploy changes with ease.</p>
+          <a href="#" className="inline-flex items-center font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 dark:hover:text-primary-700">
+              Learn more
+              <svg className="ml-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+          </a>
+      </div>
+  </div>
+</section> */}
   <section className="bg-white dark:bg-gray-900">
     <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 my-15">
         <div className="mr-auto place-self-center lg:col-span-7">
@@ -115,7 +136,8 @@ export default function Home() {
     <div className='py-20 mx-auto text-center flex flex-col items-center max-w-3xl '>
 
     </div>
-    <ProductReel query={{sort: 'desc', limit:4}} href="/products" title="Nos Service"/>
+    <ProductReel query={{sort: 'asc', limit:10}} href='/products?sort=recent'
+           title="Nos Service"/>
   </MaxWidthWrapper>
   </section>
   <section className='border-t border-gray-200 bg-gray-50'>

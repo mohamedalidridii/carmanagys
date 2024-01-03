@@ -2,12 +2,12 @@ import { z } from "zod";
 
 
 
-export const OrdersValidator = z.object({
+export const OperationValidator = z.object({
     userId: z.string(),
     agent: z.string(),
     produit: z.string(),
     lubrifiant: z.string(),
-    points: z.string(),
-    total: z.string(), 
+    pointsadded: z.coerce.number().min(1),
+    total: z.coerce.number().positive().min(1),
   });
-  export type XOrdersValidator = z.infer<typeof OrdersValidator>
+  export type XOperationValidator = z.infer<typeof OperationValidator>

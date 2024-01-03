@@ -88,6 +88,7 @@ const Page = () => {
               {isMounted &&
                 items.map(({ product }) => {
                   const label = PRODUCT_CATEGORIES.find(
+
                     (c) => c.value === product.category
                   )?.label
     // @ts-expect-error context already passed from express middleware

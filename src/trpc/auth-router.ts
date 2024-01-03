@@ -4,7 +4,8 @@ import { AuthLoginValidator, AuthSignupValidator } from "../lib/validators/accou
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import payload from "payload";
-import  {OrdersValidator}  from "../lib/validators/ordersValidator";
+import  {OperationValidator}  from "../lib/validators/ordersValidator";
+import { twimClient } from "../lib/twilio";
 
 
 
@@ -24,6 +25,9 @@ export const authRouter = router({
             where: {
                 email:{
                     equals: email,
+                },
+                matricule: {
+                    equals: matricule,
                 }
             }
         })
@@ -44,6 +48,25 @@ export const authRouter = router({
 
         return {success: true, sentToEmail: email}
     }),
+    sendSms: publicProcedure.input(z.object({
+        phoneNumber: z.string(), // Validate phone number format
+        message: z.string(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+    
+        // Access Twilio credentials
+    
+    
+          const { phoneNumber, message } = input;
+          return await twimClient.messages.create({
+            body: message,
+            from: '+16073043341', // Replace with your Twilio number
+            to: phoneNumber,
+          }).then( message => {
+            console.log(message)
+            return message;
+          })
+        }),
     verifyEmail: publicProcedure
     .input(z.object({token: z.string()}))
     .query( async ({input}) => {
@@ -55,7 +78,7 @@ export const authRouter = router({
         })
 
         if(!isVerified) throw new TRPCError({code: "UNAUTHORIZED"})
-
+        
         return {success: true}
     }),
 
@@ -83,19 +106,53 @@ export const authRouter = router({
     
     }),
 
-    createOrder: publicProcedure
-    .input(OrdersValidator)
-    .mutation( async ({ input }) =>{
+    createOperation: publicProcedure
+    .input(OperationValidator).mutation( async ({ input }) =>{
         const {userId,
-            agent, produit, lubrifiant, points, total
+            agent, produit, lubrifiant, pointsadded, total
                  }= input
         const payload = await getPayloadClient()
-        await payload.create({
-            collection:"orders",
-            data:{
+        console.log('Lubrifiant Value on Server:', lubrifiant);
+        console.log('Input Data:', { userId, agent, produit, lubrifiant, pointsadded, total });
+        try {
+            // Attempt to create the operation
+            const user = await payload.findByID({
+                collection: 'users',
+                id: userId,
+                
+            });
+
+            // Extract points from the user data
+            const points = user?.points || 0;
+
+            await payload.create({
+              collection: "operations",
+              data: {
                 userId,
-                agent, produit, lubrifiant, points, total
-            },
-        })
+                agent,
+                produit,
+                lubrifiant,
+                pointsadded,
+                total,
+              },
+            });
+            await payload.update({
+                collection: 'users',
+                id: userId,
+                data: {
+                    points: points + pointsadded,
+                },
+            });
+            // Log success message
+            console.log("the user's points:",points)
+            console.log('Operation created successfully.');
+            return undefined;
+          }
+           catch (error) {
+            // Log any errors that occur during the creation
+            console.error('Error creating operation:', error);
+            throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+          }
     })
+    
 })

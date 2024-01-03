@@ -40,6 +40,7 @@ const Page = async ({ params }: PageProps) => {
   if (!product) return notFound()
 
   const label = PRODUCT_CATEGORIES.find(
+    
     ({ value }) => value === product.category
   )?.label
 
@@ -146,8 +147,8 @@ const Page = async ({ params }: PageProps) => {
       <ProductReel
         href='/products'
         query={{ category: product.category, limit: 4 }}
-        title={`Similar ${label}`}
-        subtitle={`Les clients ont également commandé ${label} comme '${product.name}'`}
+        title={`Similaire ${label}`}
+        subtitle={`Voir des ${label} similaires de haute qualité, tout comme ${product.name}`}
       />
     </MaxWidthWrapper>
   )

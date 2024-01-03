@@ -29,7 +29,7 @@ const AddClientOrder = ({
       }}
       size='lg'
       className='w-full'>
-        {isSuccess ? "annulation" : "Vérifier"}
+        {isSuccess ? "annuler" : "Vérifier"}
     </Button>
     <div className='mt-5'> 
     <Button
@@ -39,7 +39,7 @@ const AddClientOrder = ({
     }}
     size='lg'
     className='w-full'>
-    {isSuccess ? "annulation" : "Vérifier"}
+    {isSuccess ? "annuler" : "Vérifier"}
   </Button>
   </div>
   </div>

@@ -51,9 +51,9 @@ export const Users: CollectionConfig ={
         
     },
         { name: 'points',
-        defaultValue: '0',
+        defaultValue: 0,
         required: false,
-        type:'text',
+        type:"number",
         
     },
     { name: 'matricule',
