@@ -35,7 +35,7 @@ module.exports = withPayload(
 	  // and configure the admin route to your Payload CMS.
   
 	  // Point to your Payload config (required)
-	  configPath: path.resolve(__dirname, "./src/payload.config.ts"),
+	  configPath: path.resolve(__dirname, "./dist/payload.config.js"),
   
 	  // Point to custom Payload CSS (optional)
 	//   cssPath: path.resolve(__dirname, "./css/my-custom-payload-styles.css"),
