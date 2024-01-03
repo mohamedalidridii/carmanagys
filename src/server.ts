@@ -35,31 +35,23 @@ export type WebhookRequest = IncomingMessage & {
   rawBody: Buffer
 }
 
-const start = async (): Promise<void> => {
-  
+const start = async () => {
   const webhookMiddleware = bodyParser.json({
     verify: (req: WebhookRequest, _, buffer) => {
       req.rawBody = buffer
     },
   })
 
+
+
   const payload = await getPayloadClient({
     initOptions: {
       express: app,
-      onInit: async newPayload => {
-        newPayload.logger.info(`Payload Admin URL: ${newPayload.getAdminURL()}`)
+      onInit: async (cms) => {
+        cms.logger.info(`Admin URL: ${cms.getAdminURL()}`)
       },
     },
   })
-
-  // const payload = await getPayloadClient({
-  //   initOptions: {
-  //     express: app,
-  //     onInit: async (cms) => {
-  //       cms.logger.info(`Admin URL: ${cms.getAdminURL()}`)
-  //     },
-  //   },
-  // })
 
   if (process.env.NEXT_BUILD) {
     app.listen(PORT, async () => {
