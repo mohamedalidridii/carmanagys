@@ -10,8 +10,12 @@ import nextBuild from 'next/dist/build'
 import path from 'path'
 import { PayloadRequest } from 'payload/types'
 import { parse } from 'url'
-
+import dotenv from 'dotenv'
+dotenv.config({
+  path: path.resolve(__dirname, '../.env'),
+})
 const app = express()
+
 const PORT = Number(process.env.PORT) || 3000
 
 export const createContext = ({
@@ -55,7 +59,7 @@ const start = async () => {
       )
 
       // @ts-expect-error
-      await nextBuild(path.join(__dirname, '../'))
+      await nextBuild(path.join(__dirname, '..'))
 
       process.exit()
     })
