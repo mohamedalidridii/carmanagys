@@ -11,6 +11,7 @@ import path from 'path'
 import { PayloadRequest } from 'payload/types'
 import { parse } from 'url'
 import dotenv from 'dotenv'
+import next from 'next'
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
 })
@@ -34,23 +35,31 @@ export type WebhookRequest = IncomingMessage & {
   rawBody: Buffer
 }
 
-const start = async () => {
+const start = async (): Promise<void> => {
+  
   const webhookMiddleware = bodyParser.json({
     verify: (req: WebhookRequest, _, buffer) => {
       req.rawBody = buffer
     },
   })
 
-
-
   const payload = await getPayloadClient({
     initOptions: {
       express: app,
-      onInit: async (cms) => {
-        cms.logger.info(`Admin URL: ${cms.getAdminURL()}`)
+      onInit: async newPayload => {
+        newPayload.logger.info(`Payload Admin URL: ${newPayload.getAdminURL()}`)
       },
     },
   })
+
+  // const payload = await getPayloadClient({
+  //   initOptions: {
+  //     express: app,
+  //     onInit: async (cms) => {
+  //       cms.logger.info(`Admin URL: ${cms.getAdminURL()}`)
+  //     },
+  //   },
+  // })
 
   if (process.env.NEXT_BUILD) {
     app.listen(PORT, async () => {
@@ -73,7 +82,9 @@ const start = async () => {
       createContext,
     })
   )
-
+  const nextApp = next({
+    dev: process.env.NODE_ENV !== 'production',
+  })
   app.use((req, res) => nextHandler(req, res))
 
   nextApp.prepare().then(() => {
