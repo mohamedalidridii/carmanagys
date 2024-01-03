@@ -10,11 +10,7 @@ import nextBuild from 'next/dist/build'
 import path from 'path'
 import { PayloadRequest } from 'payload/types'
 import { parse } from 'url'
-import dotenv from 'dotenv'
-import next from 'next'
-dotenv.config({
-  path: path.resolve(__dirname, '../.env'),
-})
+
 const app = express()
 
 const PORT = Number(process.env.PORT) || 3000
@@ -74,9 +70,7 @@ const start = async () => {
       createContext,
     })
   )
-  const nextApp = next({
-    dev: process.env.NODE_ENV !== 'production',
-  })
+
   app.use((req, res) => nextHandler(req, res))
 
   nextApp.prepare().then(() => {
