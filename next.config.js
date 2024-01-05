@@ -4,7 +4,7 @@ const { withPayload } = require("@payloadcms/next-payload");
 
 module.exports = withPayload(
 	{
-		
+		webpack5: false,
 			// StrictMode: true,
 			images: {
 				domains: ['www.192.168.1.18:3000'],
