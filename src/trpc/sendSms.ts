@@ -22,7 +22,8 @@ export const sendSmsRouter = router({
         body: message,
         from: '+16073043341', // Replace with your Twilio number
         to: phoneNumber,
-        statusCallback: `${process.env.NODE_ENV === 'production' ? `https://${process.env.NEXT_PUBLIC_SERVER_URL}`: "http://localhost:3000"}/api/sms/sms-callback`
+        // statusCallback: `${process.env.NODE_ENV === 'production' ? `https://${process.env.NEXT_PUBLIC_SERVER_URL}`: "http://localhost:3000"}/api/sms/sms-callback`
+        statusCallback: `${process.env.NODE_ENV === 'production' ? `${process.env.NEXT_PUBLIC_SERVER_URL}`: `${process.env.NEXT_PUBLIC_SERVER_URL}`}/api/sms/sms-callback`
       }).then( message => {
         console.log(message)
         return message;

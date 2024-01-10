@@ -1,6 +1,5 @@
 "use client"
 
-import { Icons } from "@/componenets/Icons"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -13,7 +12,6 @@ import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
 import {useForm} from 'react-hook-form'
 import {toast} from 'sonner'
-import { ZodError } from "zod"
 import { Loader2 } from "lucide-react"
 import Image from "next/image"
 const Page = ( ) => {

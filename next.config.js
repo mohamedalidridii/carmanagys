@@ -4,30 +4,47 @@ const { withPayload } = require("@payloadcms/next-payload");
 
 module.exports = withPayload(
 	{
-		webpack5: false,
 			// StrictMode: true,
 			images: {
-				domains: ['www.192.168.1.18:3000'],
 				remotePatterns: [
-					{
-						protocol: "http",
-						hostname: "localhost",
-					},
-					{
-						protocol: "http",
-						hostname: "192.168.1.18",
-					},
-					{
-						protocol: "https",
-						hostname: "car-managys.com",
-					},
-					{
-						protocol: "https",
-						hostname: "api.qrserver.com",
-					  },
+				  {
+					protocol: 'http',
+					hostname: '195.35.2.220',
+					port: '',
+				  },
+				  {
+					protocol: 'https',
+					hostname: '195.35.2.220',
+					port: '',
+				  },
 				],
+			  },
+		// 	images: {
+		// 		domains: ['http://195.35.2.220'],
+		// 		remotePatterns: [
+		// 			{
+		// 				protocol: "http",
+		// 				hostname: "localhost",
+		// 			},
+		// 			{
+		// 				protocol: "http",
+		// 				hostname: "195.35.2.220",
+		// 			},
+		// 			{
+		// 				protocol: "http",
+		// 				hostname: "192.168.1.18",
+		// 			},
+		// 			{
+		// 				protocol: "https",
+		// 				hostname: "car-managys.com",
+		// 			},
+		// 			{
+		// 				protocol: "https",
+		// 				hostname: "api.qrserver.com",
+		// 			  },
+		// 		],
 
-		},
+		// },
 	},
 	{
 	  // The second argument to `withPayload`

@@ -17,7 +17,8 @@ dotenv_1.default.config({
     path: path_1.default.resolve(__dirname, "../.env"),
 });
 exports.default = (0, config_1.buildConfig)({
-    serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
+    // serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
+    serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
     collections: [Users_1.Users, Products_1.Products, Media_1.Media, Operations_1.Operations],
     routes: {
         admin: '/sell'
