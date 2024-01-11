@@ -31,14 +31,16 @@ const AdminAccountNav = ({user}: {user: User}) => {
                     <Badge className="flex justify-center">{capitalizeFirstLetter(user.role)}</Badge>
                 </div>
             </div>
-            
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
-            
             <Link href={`/sell/collections/operations?limit=10&page=1&where%5Bor%5D%5B0%5D%5Band%5D%5B0%5D%5Bagent%5D%5Bequals%5D=${user.id}`}>Mes Operations</Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
             <Link href={"/sell"}>Tableau de bord</Link>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem asChild>
+            <Link href={"/sendsms"}>Service SMS</Link>
             </DropdownMenuItem>
             <DropdownMenuItem className="cursor-pointer">
             </DropdownMenuItem>

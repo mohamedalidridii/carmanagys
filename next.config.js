@@ -17,6 +17,10 @@ module.exports = withPayload(
 					hostname: '195.35.2.220',
 					port: '',
 				  },
+				  {
+					protocol: "https",
+					hostname: "api.qrserver.com",
+				  },
 				],
 			  },
 		// 	images: {
@@ -38,10 +42,7 @@ module.exports = withPayload(
 		// 				protocol: "https",
 		// 				hostname: "car-managys.com",
 		// 			},
-		// 			{
-		// 				protocol: "https",
-		// 				hostname: "api.qrserver.com",
-		// 			  },
+					
 		// 		],
 
 		// },

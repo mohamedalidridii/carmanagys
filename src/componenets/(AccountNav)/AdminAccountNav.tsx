@@ -40,6 +40,9 @@ const AdminAccountNav = ({user}: {user: User}) => {
             <DropdownMenuItem asChild>
             <Link href={"/sell"}>Tableau de bord</Link>
             </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+            <Link href={"/sendsms"}>Service SMS</Link>
+            </DropdownMenuItem>
             <DropdownMenuItem className="cursor-pointer">
             </DropdownMenuItem>
             <DropdownMenuItem onClick={signOut} className="cursor-pointer">

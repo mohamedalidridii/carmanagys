@@ -50,7 +50,7 @@ onError: (err) => {
   return (
     <div>
       <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-4xl font-bold">
+        <h1 className="text-2xl font-bold">
           Car-Managys{' '}
           <a className="text-blue-600" href="https://nextjs.org">
             SMS-SENDER

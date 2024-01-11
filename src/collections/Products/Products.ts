@@ -9,10 +9,10 @@ export const Products: CollectionConfig = {
 
     },
     access:{
-        read: ({req}) => req.user.role === 'topadmin',
-        update: ({req}) => req.user.role === 'topadmin',
-        create: ({req}) => req.user.role === 'topadmin',
-        delete: ({req}) => req.user.role === 'topadmin',
+        read: ({req}) => req.user.role === 'topadmin' || req.user.role === 'admin',
+        update: ({req}) => req.user.role === 'topadmin' || req.user.role === 'admin',
+        create: ({req}) => req.user.role === 'topadmin' || req.user.role === 'admin',
+        delete: ({req}) => req.user.role === 'topadmin' || req.user.role === 'admin',
     },
     fields: [
         {name: "user",

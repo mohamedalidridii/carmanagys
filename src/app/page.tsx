@@ -30,10 +30,10 @@ const perks =[
 
 export default function Home() {
   return <>
-  <section className="bg-white dark:bg-gray-900">
+  <section className="bg-white dark:bg-white">
     <div className="py-8 px-4 mx-auto mt-20 max-w-screen-xl text-center lg:py-10 lg:px-20">
         
-        <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">CAR-MANAGYS</h1>
+        <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-gray-900">CAR-MANAGYS</h1>
         <p className="mb-4 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">Notre station Car Managys est synonyme de fiabilité et d&apos;engagement envers les conducteurs. Nous offrons une gamme complète de carburants, des installations de lavage modernes pour vos véhicules, ainsi qu&apos;une boutique proposant des produits de première nécessité et une sélection d&apos;articles automobiles pratiques.</p>
         <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">Nos services d&apos;entretien et de réparation sont assurés par des professionnels compétents, garantissant que votre véhicule reste en parfait état de fonctionnement. Nous comprenons l&apos;évolution des besoins des conducteurs, c&apos;est pourquoi nous avons intégré des points de recharge électrique pour les véhicules respectueux de l&apos;environnement.</p>
         <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
@@ -42,10 +42,10 @@ export default function Home() {
         
     </div>
 </section>
-  <section className="bg-gray-50 dark:bg-gray-900 ">
+  <section className="bg-gray-50 dark:bg-white ">
     <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6 my-auto">
         <div className="font-light text-gray-800 sm:text-lg dark:text-gray-400">
-            <h2 className="mb-10 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Pourquoi Nous?</h2>
+            <h2 className="mb-10 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-gray-900">Pourquoi Nous?</h2>
             <p className="mb-4"><span className="font-extrabold">Engagement total envers la sécurité :</span>Chez Car Managys, la sécurité est notre priorité absolue. Nous offrons bien plus qu&apos;une simple assistance en cas de panne. Notre équipe est prête à intervenir 24/7 pour garantir votre sécurité sur la route. Des services d&apos;urgence complets, un soutien routier inégalé et une assistance immédiate en cas de besoin font partie intégrante de notre engagement envers vous.</p>
             <p className="mb-4"><span className="font-extrabold">Confort et commodité à chaque arrêt :</span> Nous redéfinissons l&pos;expérience des stations-service en offrant bien plus que de simples services de ravitaillement. Des installations sanitaires impeccables, des aires de repos confortables et une gamme variée d&pos;options de restauration rapide font de chaque pause chez Car Managys un moment de confort et de détente pour les conducteurs et leurs passagers.</p>
             <p className="mb-4"><span className="font-extrabold">Innovation et durabilité :</span> Chez Car Managys, nous embrassons l&apos;avenir de la mobilité. Nous avons intégré des points de recharge électrique pour les véhicules respectueux de l&apos;environnement, témoignant de notre engagement envers la durabilité et l&apos;innovation. Nous nous efforçons constamment d&apos;intégrer les dernières avancées technologiques pour répondre aux besoins changeants des conducteurs soucieux de l&pos;environnement.</p>
@@ -57,10 +57,10 @@ export default function Home() {
     </div>
   </section>
   
-  <section className="bg-white dark:bg-gray-900">
+  <section className="bg-white dark:bg-white">
     <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 my-15">
         <div className="mr-auto place-self-center lg:col-span-7">
-            <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">Gagner des points en achetant un produit</h1>
+            <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-gray-900">Gagner des points en achetant un produit</h1>
             <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Inscrivez-vous dès aujourd&apos;hui et commencez à profiter de tous les avantages de notre programme de fidélité !
 
 </p>
@@ -68,7 +68,7 @@ export default function Home() {
                 Commencer maintenant
                 <svg className="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </Link>
-            <Link href="/sign-in" className=" mx-5 inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+            <Link href="/sign-in" className=" mx-5 inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-gray-900 dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                 Connexion
             </Link> 
         </div>

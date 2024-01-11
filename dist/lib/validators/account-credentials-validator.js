@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SendSmsValidator = exports.AuthSignupValidator = exports.mappedCarList = exports.carMenu = exports.AuthLoginValidator = void 0;
+exports.SendSmsValidator = exports.AuthSignupValidator = exports.mappedCarburant = exports.mappedCarList = exports.Carburant = exports.carMenu = exports.AuthLoginValidator = void 0;
 const zod_1 = require("zod");
 exports.AuthLoginValidator = zod_1.z.object({
     email: zod_1.z.string().email(),
@@ -57,6 +57,13 @@ exports.carMenu = [
     "alpha_romeo",
     "bestune"
 ];
+exports.Carburant = [
+    "SSP",
+    "GSS",
+    "GO",
+    "SSPPREMIUM",
+    "GSSPREMIUM",
+];
 exports.mappedCarList = {
     audi: 'Audi',
     bmw: 'Bmw',
@@ -108,6 +115,13 @@ exports.mappedCarList = {
     alpha_romeo: 'Alpha Romeo',
     bestune: 'Bestune'
 };
+exports.mappedCarburant = {
+    SSP: "SSP",
+    GSS: "GSS",
+    GO: "GO",
+    SSPPREMIUM: "SSP-PREMIUM",
+    GSSPREMIUM: "GSS-PREMIUM",
+};
 exports.AuthSignupValidator = zod_1.z.object({
     email: zod_1.z.string().email(),
     password: zod_1.z.string().min(8, { message: 'Le mot de passe doit comporter au moins 8 caractères.' }),
@@ -117,7 +131,7 @@ exports.AuthSignupValidator = zod_1.z.object({
     matricule: zod_1.z.string().min(2, { message: 'la matricule doit comporter au moins 2 caractères.' }),
     marque: zod_1.z.enum(exports.carMenu),
     type: zod_1.z.string(),
-    carburant: zod_1.z.string(),
+    carburant: zod_1.z.enum(exports.Carburant),
     kilometrage: zod_1.z.string(),
 });
 exports.SendSmsValidator = zod_1.z.object({

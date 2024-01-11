@@ -5,7 +5,7 @@ import { Button, buttonVariants } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
-import { AuthSignupValidator, TAuthCredentialsValidator, TCarMenu, carMenu, mappedCarList } from "@/lib/validators/account-credentials-validator"
+import { AuthSignupValidator, TAuthCredentialsValidator, TCarMenu, carMenu, mappedCarList, mappedCarburant } from "@/lib/validators/account-credentials-validator"
 import { trpc } from "@/trpc/client"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { ArrowRight } from "lucide-react"
@@ -145,8 +145,8 @@ const Page = ( ) => {
                             <Label htmlFor="marque">Marque</Label>
                             <select {...register('marque')}>
                                 {Object.entries(mappedCarList).map(([value, label]) => (
-    <option key={value} value={value}>{label}</option>
-  ))}
+                                    <option key={value} value={value}>{label}</option>
+                                ))}
                             </select>
                             {/* <Input {...register("marque")}
                             className={cn({
@@ -188,12 +188,11 @@ const Page = ( ) => {
                         </div>
                         <div className="grid gap-1 py-2">
                             <Label htmlFor="carburant">Carburant</Label>
-                            <Input {...register("carburant")}
-                            className={cn({
-                                "focus-visible:ring-red-500": errors.carburant
-                            })}
-                            placeholder="carburant"
-                            />
+                            <select {...register('carburant')}>
+                                {Object.entries(mappedCarburant).map(([value, label]) => (
+                                    <option key={value} value={value}>{label}</option>
+                                ))}
+                            </select>
                             
                         </div>
                         <div className="grid gap-1 py-2">

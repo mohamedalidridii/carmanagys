@@ -211,7 +211,7 @@
     return (
       <MaxWidthWrapper>
           <div className="py-8 px-4 mx-auto mt-20 max-w-screen-xl text-center lg:py-10 lg:px-20 flex flex-col items-center ">
-            <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Selectionner une catégorie</h1>
+            <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-gray-900">Selectionner une catégorie</h1>
             {PRODUCT_CATEGORIES.map(({ value, label }) => (
               <label key={value} className='relative flex content-center mb-7 text-2xl' >
               <input
@@ -241,58 +241,58 @@
         ) : null}
 
   {checkoutClicked && (
-      <section className="bg-gray-50 dark:bg-gray-900">
+      <section className="bg-gray-50 dark:bg-gray-50">
       <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16 pt-10">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Passer une Operation</h2>
+          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-gray-900">Passer une Operation</h2>
           <p className="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">
           Seuls les agents sont autorisés à accéder à cette section.
           </p>
         </div>
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
 
-          <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+          <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-white dark:border-gray-700">
               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                  <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                  <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-gray-900">
                       Ajouter une operation
                   </h1>
                   <form 
                   onSubmit={handleSubmit(onSubmit)} 
                   className="space-y-4 md:space-y-6">
                       <div>
-                        <Label htmlFor="idUser" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Id client</Label>
+                        <Label htmlFor="idUser" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">Id client</Label>
                           <Input 
                           {...register('userId')}
-                          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500" 
                           readOnly value={id_client}/>
                       </div>
                       <div>
-                          <Label htmlFor="agent" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">id Agent</Label>
+                          <Label htmlFor="agent" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">id Agent</Label>
                           <Input
                           {...register('agent')}
-                          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500" 
                           readOnly value={id_agent}/>
                       </div>
                       <div>
-                          <Label htmlFor="produit" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Produit</Label>
+                          <Label htmlFor="produit" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">Produit</Label>
                           <Input
                           {...register('produit')}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     readOnly
                     value={selectedProducts.map((product) => product.name).join(', ')}/>
                       </div>
                       <div>
-                          <Label htmlFor="lubrifiant" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lubrifiant en Dt</Label>
+                          <Label htmlFor="lubrifiant" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">Carburant en Dt</Label>
                           {!isCarburantCategory ? (
                           <Input
                             {...register('lubrifiant')}
-                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             value="0"
                             readOnly // Use disabled attribute instead of readOnly
                           />
                         ) : (
                           <Input
                           {...register('lubrifiant')}
-                          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           value={lubrifiantValue} // Use 'lubrifiantValue' for the value when in the carburant category
                           onChange={(e) => setLubrifiantValue(e.target.value)} // Update the 'lubrifiantValue' state
                         />
@@ -302,17 +302,17 @@
 
                           <div className="ml-3 text-sm">
                             <Label htmlFor="total"
-                          className="font-light text-gray-500 dark:text-gray-300">Total</Label>
+                          className="font-light text-gray-500 dark:text-gray-900">Total</Label>
                             <Input
                               {...register('total')}
-                              className="font-light text-gray-500 dark:text-gray-300"
+                              className="font-light text-gray-500 dark:text-gray-900"
                               value={totalValue} // Use 'totalValue' for the total value
                               readOnly
                             />
-                            <Label htmlFor="points" className="font-light text-gray-500 dark:text-gray-300">Les Points totaux </Label>
+                            <Label htmlFor="points" className="font-light text-gray-500 dark:text-gray-900">Les Points totaux </Label>
                             <Input
                               {...register('pointsadded')}
-                              className="font-light text-gray-500 dark:text-gray-300"
+                              className="font-light text-gray-500 dark:text-gray-900"
                               value={totalPoints} // Display the calculated total points in the input field
                               readOnly
                             />
@@ -322,7 +322,7 @@
                         {buttonText}
                       </Button>
                       {/* <Button className="w-full" type='submit'>Enregistrer l&apos;operation</Button> */}
-                      <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                      <p className="text-sm font-light text-gray-500 dark:text-gray-900">
                       </p>
                   </form>
               </div>

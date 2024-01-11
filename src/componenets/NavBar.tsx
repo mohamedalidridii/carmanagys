@@ -56,7 +56,7 @@ const NavBar = async () => {
                                     {user ? null : (
                                     <Link href='/sign-in' className={buttonVariants({
                                         // variant: 'ghost',
-                                    })}>Espace Client
+                                    })}>Connexion
                                     </Link>
                                     )}
                                     {user ? null : (

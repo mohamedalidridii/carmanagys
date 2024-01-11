@@ -38,7 +38,7 @@ const ProductsPage = ({ searchParams }: ProductsPageProps) => {
     <MaxWidthWrapper>
         <div className="py-8 px-4 mx-auto mt-20 max-w-screen-xl text-center lg:py-10 lg:px-20 flex flex-col items-center ">
         
-          <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Selectionner une catégorie</h1>
+          <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-gray-900">Selectionner une catégorie</h1>
           {PRODUCT_CATEGORIES.map(({ value, label }) => (
             <label key={value} className='relative flex content-center mb-7 text-2xl' >
               <input

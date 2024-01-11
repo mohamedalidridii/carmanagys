@@ -58,7 +58,13 @@ export const carMenu = [
   "chevrolet",
   "alpha_romeo",
   "bestune"] as const
-
+export const Carburant= [
+  "SSP",
+  "GSS",
+  "GO",
+  "SSPPREMIUM",
+  "GSSPREMIUM",
+] as const
   export const mappedCarList: {[key in TCarMenu]: string} = {
     audi: 'Audi',
     bmw: 'Bmw',
@@ -110,6 +116,13 @@ export const carMenu = [
     alpha_romeo: 'Alpha Romeo',
     bestune: 'Bestune'
 }
+ export const mappedCarburant: {[key in Tcarburant]: string} = {
+  SSP: "SSP",
+  GSS:"GSS",
+  GO:"GO",
+  SSPPREMIUM: "SSP-PREMIUM",
+  GSSPREMIUM: "GSS-PREMIUM",
+ }
   export const AuthSignupValidator = z.object({
     email: z.string().email(),
     password: z.string().min(8, { message: 'Le mot de passe doit comporter au moins 8 caractères.' }),
@@ -119,7 +132,7 @@ export const carMenu = [
     matricule: z.string().min(2, { message: 'la matricule doit comporter au moins 2 caractères.' }),
     marque: z.enum(carMenu),
     type: z.string(), 
-    carburant: z.string(),
+    carburant: z.enum(Carburant),
     kilometrage : z.string(),
   });
   export const SendSmsValidator = z.object({
@@ -132,3 +145,4 @@ export type TAuthCredentialsValidator = z.infer<typeof AuthSignupValidator>
 export type SAuthCredentialsValidator = z.infer<typeof AuthLoginValidator>
 export type XSendSmsValidator = z.infer<typeof SendSmsValidator>
 export type TCarMenu = typeof carMenu[number]
+export type Tcarburant = typeof Carburant[number]
