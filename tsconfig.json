@@ -33,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "src/app/api/helloword.js"  ],
+, "src/app/api/helloword.js", "src/graphics/Logo.js"  ],
   "exclude": [
     "node_modules"
   ]

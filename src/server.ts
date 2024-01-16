@@ -8,10 +8,14 @@ import bodyParser from 'body-parser'
 import { IncomingMessage } from 'http'
 import nextBuild from 'next/dist/build'
 import path from 'path'
-
+import cors from 'cors'
 
 const app = express()
-
+app.use(cors({
+  origin:'*',
+  credentials: true,
+  
+}))
 const PORT = Number(process.env.PORT) || 3000
 
 export const createContext = ({
@@ -78,7 +82,9 @@ const start = async () => {
     app.listen(PORT, async () => {
       payload.logger.info(
         `Next.js App URL: ${process.env.NEXT_PUBLIC_SERVER_URL}`
+        
       )
+      console.log('Domain:', `${process.env.NEXT_PUBLIC_SERVER_URL}`)
     })
   })
 }

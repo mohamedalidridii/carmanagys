@@ -21,6 +21,10 @@ module.exports = withPayload(
 					protocol: "https",
 					hostname: "api.qrserver.com",
 				  },
+				  {
+					protocol: "https",
+					hostname: "www.car-managys.com",
+				  },
 				],
 			  },
 		// 	images: {

@@ -3,13 +3,13 @@ import { postgresAdapter } from '@payloadcms/db-postgres'
 import {slateEditor} from '@payloadcms/richtext-slate'
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import path from "path";
-import { Users } from "./collections/Users";
+import { Utilisateur } from "./collections/Utilisateurs";
 
 import dotenv from "dotenv";
-import { Products } from "./collections/Products/Products";
+import { Produits } from "./collections/Produits/Produits";
 import { Media } from "./collections/Media";
 import { Operations } from "./collections/Operations";
-
+import Logo from './graphics/Logo';
 dotenv.config({
     path: path.resolve(__dirname, "../.env"),
 })
@@ -18,7 +18,7 @@ dotenv.config({
 export default buildConfig({
     // serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
     serverURL: process.env.NEXT_PUBLIC_SERVER_URL ,
-    collections: [Users, Products, Media, Operations],
+    collections: [Utilisateur, Produits, Media, Operations],
     routes: {
         admin: '/sell'
     },
@@ -30,6 +30,11 @@ export default buildConfig({
             favicon: "/favicon.ico",
             ogImage: "/thumbnail.jpg",
     },
+    components: {
+        graphics: {
+          Logo,
+        },
+      },
 },
 rateLimit: {
     max: 2000,

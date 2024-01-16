@@ -44,7 +44,12 @@ const trpc_1 = require("./trpc");
 const body_parser_1 = __importDefault(require("body-parser"));
 const build_1 = __importDefault(require("next/dist/build"));
 const path_1 = __importDefault(require("path"));
+const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
+app.use((0, cors_1.default)({
+    origin: '*',
+    credentials: true,
+}));
 const PORT = Number(process.env.PORT) || 3000;
 const createContext = ({ req, res, }) => ({
     req,
@@ -83,6 +88,7 @@ const start = () => __awaiter(void 0, void 0, void 0, function* () {
         payload.logger.info('Next.js started');
         app.listen(PORT, () => __awaiter(void 0, void 0, void 0, function* () {
             payload.logger.info(`Next.js App URL: ${process.env.NEXT_PUBLIC_SERVER_URL}`);
+            console.log('Domain:', `${process.env.NEXT_PUBLIC_SERVER_URL}`);
         }));
     });
 });

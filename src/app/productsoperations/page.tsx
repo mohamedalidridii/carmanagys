@@ -29,7 +29,7 @@
   };
 
 
-  const ProductsOperationPage: React.FC<{ searchParams: { agentId: string, clientId:string } }> = ({ searchParams }: ProductsPageProps) => {
+  const ProductsOperationPage: React.FC<{ searchParams: { agentId: string, clientId:string, clientName: string, clientPoints: string, clientPrenom: string;} }> = ({ searchParams }: ProductsPageProps) => {
     
     
     const [checkoutClicked, setCheckoutClicked] = useState(false);
@@ -59,6 +59,9 @@
     
     const id_client = searchParams.clientId
     const id_agent = searchParams.agentId
+    const clientName= searchParams.clientName
+    const clientPrenom= searchParams.clientPrenom
+    const clientPoints= searchParams.clientPoints
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     
     const handleCategoryChange = (value: string) => {
@@ -211,6 +214,9 @@
     return (
       <MaxWidthWrapper>
           <div className="py-8 px-4 mx-auto mt-20 max-w-screen-xl text-center lg:py-10 lg:px-20 flex flex-col items-center ">
+            
+            <p className='font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-900'>Nom: {clientName} {clientPrenom}</p>
+            <p className='font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-900'>Points: {clientPoints}</p>
             <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-gray-900">Selectionner une catégorie</h1>
             {PRODUCT_CATEGORIES.map(({ value, label }) => (
               <label key={value} className='relative flex content-center mb-7 text-2xl' >
@@ -281,7 +287,7 @@
                     value={selectedProducts.map((product) => product.name).join(', ')}/>
                       </div>
                       <div>
-                          <Label htmlFor="lubrifiant" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">Carburant en Dt</Label>
+                          <Label htmlFor="lubrifiant" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">Carburant en DT</Label>
                           {!isCarburantCategory ? (
                           <Input
                             {...register('lubrifiant')}

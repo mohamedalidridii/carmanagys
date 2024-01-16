@@ -2,7 +2,7 @@ import { CARS_LIST } from "../config";
 import { CollectionConfig } from "payload/types";
 
 
-export const Users: CollectionConfig ={
+export const Utilisateur: CollectionConfig ={
     slug: "users",
     auth: {
         verify:{

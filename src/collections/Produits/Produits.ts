@@ -2,7 +2,7 @@
 import { PRODUCT_CATEGORIES } from "../../config";
 import { CollectionConfig } from "payload/types";
 
-export const Products: CollectionConfig = {
+export const Produits: CollectionConfig = {
     slug: "products",
     admin: {
         useAsTitle: "name",
@@ -25,7 +25,7 @@ export const Products: CollectionConfig = {
             },
         },
         {name: "name",
-        label: 'Name',
+        label: 'Nom',
         type: "text",
         required: true,
         },
@@ -34,7 +34,7 @@ export const Products: CollectionConfig = {
         type: "textarea",
         },
         {name: 'price',
-        label: 'Price in USD',
+        label: 'Prix en DT',
         min: 0,
         max: 1000,
         type: "number",

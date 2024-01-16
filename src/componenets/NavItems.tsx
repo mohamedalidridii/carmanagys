@@ -29,26 +29,8 @@ const NavItems = () => {
 
 
     return <div className="flex gap-4 h-full" ref={navRef}>
-        {PRODUCT_CATEGORIES.map((category, i) => {
-
-            const handleOpen =() => {
-                if(activeIndex ===i) {
-                    setActiveIndex(null)
-                } else {
-                    setActiveIndex(i)
-                }
-            }
-            const isOpen = i === activeIndex
-            return (
-                <NavItem 
-                category={category} 
-                handleOpen={handleOpen} 
-                isOpen={isOpen} 
-                key={category.value}
-                isAnyOpen={isAnyOpen}
-                />
-            )
-            })}
+        
+            
     </div>
         
     

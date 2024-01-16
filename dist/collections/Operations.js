@@ -17,7 +17,7 @@ exports.Operations = {
         description: 'Vos commandes precedents',
     },
     access: {
-        read: ({ req }) => req.user.role === 'agent' || req.user.role === 'admin' || req.user.role === 'client',
+        read: ({ req }) => req.user.role === 'agent' || req.user.role === 'admin' || req.user.role === 'client' || req.user.role === 'topadmin',
         update: ({ req }) => req.user.role === 'admin' || req.user.role === 'topadmin',
         delete: ({ req }) => req.user.role === 'admin' || req.user.role === 'topadmin',
         create: ({ req }) => req.user.role === 'admin' || req.user.role === 'topadmin',

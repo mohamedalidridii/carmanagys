@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Products = void 0;
+exports.Produits = void 0;
 const config_1 = require("../../config");
-exports.Products = {
+exports.Produits = {
     slug: "products",
     admin: {
         useAsTitle: "name",
@@ -24,7 +24,7 @@ exports.Products = {
             },
         },
         { name: "name",
-            label: 'Nom',
+            label: 'Name',
             type: "text",
             required: true,
         },
@@ -33,7 +33,7 @@ exports.Products = {
             type: "textarea",
         },
         { name: 'price',
-            label: 'Prix en Dinar',
+            label: 'Price in USD',
             min: 0,
             max: 1000,
             type: "number",

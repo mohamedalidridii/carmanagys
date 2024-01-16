@@ -165,7 +165,11 @@ const Page = async ({ params }: PageProps) => {
                       pathname:"/productsoperations",
                       query: {
                         agentId: `${user.id}`,
-                        clientId: `${client.id}`
+                        clientId: `${client.id}`,
+                        clientName: `${client.nom}`,
+                        clientPrenom: `${client.prenom}`,
+                        clientPoints: `${client.points}`
+
                       }
                     }} className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white border border-gray-300 bg-blue-500 rounded-lg">Pass</Link>
 

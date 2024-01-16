@@ -23,7 +23,7 @@ const NavBar = async () => {
     const {user} = await getServerSideUser(nextCookies)
 
     return (
-        <div className="bg-white sticky z-50 top-0 inset-x-0 h-16">
+        <div className="bg-white sticky z-50 top-0 inset-x-0 h-30 pt-10">
             <header className="relative bg-white">
                 <MaxWidthWrapper>
                     <div className="border-b border-gray-200">
@@ -44,7 +44,7 @@ const NavBar = async () => {
 
                             <div className="ml-4 flex lg:ml-0">
                                 <Link href='/'>
-                                    <Icons.logo className="h-10 w-10" />
+                                    <Icons.logo className="h-15 w-15" />
                                 </Link>
                             </div>
                             <div className="hidden z-50 lg:ml-8 lg:block lg:self-stretch">
