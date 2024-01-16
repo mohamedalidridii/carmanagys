@@ -23,7 +23,7 @@ const NavBar = async () => {
     const {user} = await getServerSideUser(nextCookies)
 
     return (
-        <div className="bg-white sticky z-50 top-0 inset-x-0 h-30 pt-10">
+        <div className="bg-white sticky z-50 top-0 inset-x-0 h-30">
             <header className="relative bg-white">
                 <MaxWidthWrapper>
                     <div className="border-b border-gray-200">
@@ -43,7 +43,7 @@ const NavBar = async () => {
                                     ): null}
 
                             <div className="ml-4 flex lg:ml-0">
-                                <Link href='/'>
+                                <Link href='/isSignIn'>
                                     <Icons.logo className="h-15 w-15" />
                                 </Link>
                             </div>
@@ -53,23 +53,6 @@ const NavBar = async () => {
 
                             <div className="ml-auto flex item-center">
                                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                                    {user ? null : (
-                                    <Link href='/sign-in' className={buttonVariants({
-                                        // variant: 'ghost',
-                                    })}>Connexion
-                                    </Link>
-                                    )}
-                                    {user ? null : (
-                                        <span 
-                                            className="h-6 w-pw bg-gray-200"
-                                            aria-hidden='true'/>
-                                            )}
-                                    {user ? null : (
-                                        <span 
-                                            className="h-6 w-pw bg-gray-200"
-                                            aria-hidden='true'/>
-                                            )}
-
                                     { user?.role === 'client'? (<div className="flex justify-center items-center">
                                         <QrCodeButton user={user} />
                                         <ClientAccountNav user={user}/>
@@ -80,25 +63,11 @@ const NavBar = async () => {
                                     { user?.role === 'admin'? (<div className="flex">
                                         <AdminAccountNav user={user}/>
                                         </div>): null }
-                                        
-                                        { user ? null : (<Link href='/sign-up'
-                                            className={buttonVariants({
-                                            variant: 'ghost',
-                                        })}>
-                                        Créer un compte
-                                        </Link>)}
-
                                     {user ? (<span 
                                             className="h-6 w-pw bg-gray-200"
                                             aria-hidden='true'
 
                                             />) : null}
-                                    {user ? null : (<div className="flex lg:ml-6">
-                                            <span 
-                                            className="h-6 w-pw bg-gray-200"
-                                            aria-hidden='true'/>
-                                                    </div>
-                                                    )}
                                     <div className="ml-4 flow-root lg:ml-6">
                                         {/* <Cart /> */}
                                     </div>
