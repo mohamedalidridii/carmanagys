@@ -28,10 +28,6 @@ const NavBar = async () => {
                 <MaxWidthWrapper>
                     <div className="border-b border-gray-200">
                         <div className="flex h-16 items-center justify-between">
-                            
-                            {!user? (
-                                    <MobileNav/>
-                                    ): null}
                             {user?.role === 'client'? (
                                     <MobileNavClient user={user}/>
                                     ): null}
@@ -43,9 +39,11 @@ const NavBar = async () => {
                                     ): null}
 
                             <div className="ml-4 flex lg:ml-0">
-                                <Link href='/isSignIn'>
+                                {user ? (<Link href='/isSignIn'>
                                     <Icons.logo className="h-15 w-15" />
-                                </Link>
+                                </Link>): (<Link href='/'>
+                                    <Icons.logo className="h-15 w-15" />
+                                </Link>)}
                             </div>
                             <div className="hidden z-50 lg:ml-8 lg:block lg:self-stretch">
                                 <NavItems />

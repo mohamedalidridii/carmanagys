@@ -90,14 +90,14 @@ const ProductReelOperation = (props: ProductReelOperationProps) => {
             <div className="max-w-2xl px-4 lg:max-w-4xl lg:px-0">
                 {title ? 
                 (<h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">{title}</h1>) : null}
-                {subtitle ? 
-                (<p className="mt-2 text-sm text-muted-foreground">{subtitle}</p>) : null}
+                {/* {subtitle ? 
+                (<p className="mt-2 text-sm text-muted-foreground">{subtitle}</p>) : null} */}
             </div>
 
         </div>
         <div className="relative">
             <div className="mt-6 flex items-center w-full sm:flex-wrap">
-                <div className="w-full grid grid-cols-4 gap-x-5 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-10 lg:gap-x-8">
+                <div className="w-full grid grid-cols-2 gap-x-5 gap-y-10 sm:gap-x-6 md:grid-cols-2 md:gap-y-10 lg:gap-x-8">
                 {map.map((product, i) => (
                   <ProductListingOperation
                     key={`product-${i}`}

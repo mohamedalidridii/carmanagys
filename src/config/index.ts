@@ -21,28 +21,21 @@ export const PRODUCT_CATEGORIES =[
                 imageSrc: '/nav/Carburant/Essence-sans-plomb-icone.webp',
 
             },
-            {
-                name:"Essance sans Plomb Plus",
-                href: '#',
-                imageSrc: '/nav/Carburant/Essence-sans-plomb-plus-icone.png',
-
-            },
-            {
-                name:"GPL",
-                href: '#',
-                imageSrc: '/nav/Carburant/gpl-icone.png',
-
-            },
-            {
-                name:"Pétrole",
-                href: '#',
-                imageSrc: '/nav/Carburant/petrole-icone.png',
-
-            },
         ]
     },
-    {
-        label: "Commodités",
+    // {label: "Produits",
+    //     value: "produits" as const,
+    //     featured:[
+    //         {
+    //             name:"Diesel",
+    //             href: '#',
+    //             imageSrc: '/nav/Carburant/Diesel-icone.png',
+
+    //         },
+            
+    //     ]
+    // },
+    {label: "Commodités",
         value: "commodités" as const,
         featured:[
             {
@@ -51,28 +44,24 @@ export const PRODUCT_CATEGORIES =[
                 imageSrc: '/nav/Commodité/acc_auto-img.png',
 
             },
-            {
-                name:"Eau radiateur",
-                href: '#',
-                imageSrc: '/nav/Commodité/eau-radiateur-icone.png',
+            
 
-            },
-            {
-                name:"Huile voiture",
-                href: '#',
-                imageSrc: '/nav/Commodité/huile_voiture-icone.png',
-
-            },
-            // {
-            //     name:"Best Selling Icons",
-            //     href: '#',
-            //     imageSrc: '/nav/icons/bestsellers.jpg',
-
-            // },
         ]
     },
-    {
-        label: "Entretien et Réparation",
+    // {label: "Services",
+    //     value: "services" as const,
+    //     featured:[
+    //         {
+    //             name:"Accessoires",
+    //             href: '#',
+    //             imageSrc: '/nav/Commodité/acc_auto-img.png',
+
+    //         },
+            
+
+    //     ]
+    // },
+    {label: "Entretien et Réparation",
         value: "entretientEtReparation" as const,
         featured:[
             {
@@ -92,12 +81,6 @@ export const PRODUCT_CATEGORIES =[
                 href: '#',
                 imageSrc: '/nav/er/vidange-icone.png',
             },
-            // {
-            //     name:"Best Selling Icons",
-            //     href: '#',
-            //     imageSrc: '/nav/icons/bestsellers.jpg',
-
-            // },
         ]
     }
 ]
