@@ -40,9 +40,6 @@ const start = async () => {
       req.rawBody = buffer
     },
   })
-
-
-
   const payload = await getPayloadClient({
     initOptions: {
       express: app,

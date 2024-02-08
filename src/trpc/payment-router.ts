@@ -16,5 +16,4 @@ export const paymentRouter = router({
         }
         const payload = await getPayloadClient()
     }),
-
 })

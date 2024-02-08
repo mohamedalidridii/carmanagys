@@ -11,6 +11,7 @@ export interface Config {
     users: User;
     products: Product;
     media: Media;
+    mediaClient: MediaClient;
     operations: Operation;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -29,6 +30,10 @@ export interface User {
   type: string;
   carburant: string;
   kilometrage: string;
+  lubrifiantMoteur: string;
+  DateDeMiseEnCirculation: string;
+  DateVisiteTechnique: string;
+  DateValiditeAssurance: string;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -44,11 +49,11 @@ export interface User {
 }
 export interface Product {
   id: number;
-  user?: (number | null) | User;
+  users?: (number | null) | User;
   name: string;
   description?: string | null;
   price: number;
-  category: 'carburant' | 'commodités' | 'entretientEtReparation';
+  category: 'carburant' | 'produits' | 'services';
   points: number;
   priceId?: string | null;
   stripeId?: string | null;
@@ -97,11 +102,52 @@ export interface Media {
     };
   };
 }
+export interface MediaClient {
+  id: number;
+  user?: (number | null) | User;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    card?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    tablet?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
 export interface Operation {
   id: number;
   userId: string;
+  userName: string;
   agent: string;
+  agentName: string;
   produit: string;
+  distributeur: string;
   lubrifiant: string;
   pointsadded: number;
   total: number;

@@ -206,7 +206,7 @@ const UserListing = async () => {
 
                 <div className="p-5 flex flex-col gap-5">
                     <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                        <p>Matricule de la Voiture</p>
+                        <p>immatriculation</p>
                     </h3>
                     <span className="text-l font-bold tracking-tight text-gray-500 dark:text-gray-800">{user?.matricule}</span>
                     {/* <span className="text-gray-500 dark:text-gray-400">CEO & Web Developer</span> */}

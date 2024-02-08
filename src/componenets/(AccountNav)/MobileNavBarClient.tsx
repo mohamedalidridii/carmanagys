@@ -57,47 +57,27 @@ const MobileNavClient = ({user}: {user: User}) => {
     )
     
   return (
-    <div>
-      <div className='relative z-40 lg:hidden'>
-        <div className='fixed inset-0 bg-black bg-opacity-25' />
-      </div>
-
-      <div className='fixed overflow-y-scroll overscroll-y-none inset-0 z-40 flex'>
-        <div className='w-4/5'>
-          <div className='relative flex w-full max-w-sm flex-col overflow-y-auto bg-white pb-12 shadow-xl'>
-            <div className='flex px-4 pb-2 pt-5'>
-              <button
-                type='button'
-                onClick={() => setIsOpen(false)}
-                className='relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400'>
-                <X className='h-6 w-6' aria-hidden='true' />
-              </button>
+    <DropdownMenu>
+        <DropdownMenuTrigger asChild className="overflow-visible sm:invisible">
+            <Button variant="ghost" size="sm" className="relative">Mon compte</Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="bg-white w-60" align="end">
+            <div className="flex items-center justify-center gap-5 p-2">
+                <div className="flex flex-col space-y-0.5 leading-none gap-2">
+                    <Badge variant="outline" className="flex justify-center">{`${user.nom} ${user.prenom}`}</Badge>
+                    <Badge className="flex justify-center">{`${capitalizeFirstLetter(user.role)} ID:${user.id}`}</Badge>
+                </div>
             </div>
-            
-
-            <div className='space-y-6 border-t border-gray-200 px-4 py-6'>
-              <div className='flex flex-col items-center gap-15 '>
-              <Badge className="flex justify-center gap-15">{capitalizeFirstLetter(user.role)}</Badge>
-                <Link
-                  onClick={() => closeOnCurrent('/sign-in')}
-                  href={`/user/${user.id}`}
-                  >
-                  <Button className='w-fill'>Mes Informations</Button>
-                </Link>
-                <QrCodeButton user={user}/>
-                <Link
-                  onClick={signOut} 
-                  href='/'
-                >
-                    <Button className='w-fill'>Déconnexion</Button>
-                  
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem asChild>
+            </DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={signOut} className="cursor-pointer">
+                Déconnexion
+            </DropdownMenuItem>
+        </DropdownMenuContent>
+    </DropdownMenu>
   )
 }
 

@@ -3,22 +3,24 @@ import { postgresAdapter } from '@payloadcms/db-postgres'
 import {slateEditor} from '@payloadcms/richtext-slate'
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import path from "path";
-import { Utilisateur } from "./collections/Utilisateurs";
+import { Users } from "./collections/Utilisateurs";
 
 import dotenv from "dotenv";
 import { Produits } from "./collections/Produits/Produits";
 import { Media } from "./collections/Media";
 import { Operations } from "./collections/Operations";
 import Logo from './graphics/Logo';
+import Icon from './graphics/Icon';
+import { MediaClient } from "./collections/MediaClient";
+
 dotenv.config({
     path: path.resolve(__dirname, "../.env"),
 })
 
-
 export default buildConfig({
     // serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
     serverURL: process.env.NEXT_PUBLIC_SERVER_URL ,
-    collections: [Utilisateur, Produits, Media, Operations],
+    collections: [Users, Produits, Media, MediaClient, Operations],
     routes: {
         admin: '/sell'
     },
@@ -26,15 +28,17 @@ export default buildConfig({
         user: "users",
         bundler: webpackBundler(),
         meta: {
-            titleSuffix: '- Digital',
+            titleSuffix: '- CarManagys',
             favicon: "/favicon.ico",
             ogImage: "/thumbnail.jpg",
     },
     components: {
         graphics: {
-          Logo,
+          Logo: Logo,
+          Icon: Icon,
         },
       },
+    
 },
 rateLimit: {
     max: 2000,

@@ -27,8 +27,8 @@ const ClientAccountNav = ({user}: {user: User}) => {
         <DropdownMenuContent className="bg-white w-60 " align="end">
             <div className="flex items-center justify-center gap-5 p-2">
                 <div className="flex flex-col space-y-0.5 leading-none gap-2">
-                    <Badge variant="outline" className="flex justify-center">{user.email}</Badge>
-                    <Badge className="flex justify-center">{capitalizeFirstLetter(user.role)}</Badge>
+                    <Badge variant="outline" className="flex justify-center">{`${user.nom} ${user.prenom}`}</Badge>
+                    <Badge className="flex justify-center">{`${capitalizeFirstLetter(user.role)} ID:${user.id}`}</Badge>
                 </div>
             </div>
             

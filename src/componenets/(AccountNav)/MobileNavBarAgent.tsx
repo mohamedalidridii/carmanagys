@@ -21,7 +21,7 @@ const AgentAccountNav = ({user}: {user: User}) => {
 
     const {signOut} = useAuth()
     return <DropdownMenu>
-        <DropdownMenuTrigger asChild className="overflow-visible">
+        <DropdownMenuTrigger asChild className="overflow-visible sm:invisible">
             <Button variant="ghost" size="sm" className="relative">Mon compte</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="bg-white w-60 " align="end">

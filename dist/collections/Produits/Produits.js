@@ -4,6 +4,16 @@ exports.Produits = void 0;
 const config_1 = require("../../config");
 exports.Produits = {
     slug: "products",
+    labels: {
+        singular: {
+            en: 'Product',
+            fr: 'Produit'
+        },
+        plural: {
+            en: 'Products',
+            fr: 'Produits'
+        }
+    },
     admin: {
         useAsTitle: "name",
     },
@@ -14,7 +24,11 @@ exports.Produits = {
         delete: ({ req }) => req.user.role === 'topadmin' || req.user.role === 'admin',
     },
     fields: [
-        { name: "user",
+        { name: "users",
+            label: {
+                en: 'users',
+                fr: 'Utilisateurs',
+            },
             type: "relationship",
             relationTo: "users",
             required: true,
@@ -24,16 +38,25 @@ exports.Produits = {
             },
         },
         { name: "name",
-            label: 'Nom',
+            label: {
+                en: 'Name',
+                fr: 'Nom',
+            },
             type: "text",
             required: true,
         },
         { name: "description",
-            label: 'Description',
+            label: {
+                en: 'description',
+                fr: 'description',
+            },
             type: "textarea",
         },
         { name: 'price',
-            label: 'Prix en DT',
+            label: {
+                en: 'Price in DT',
+                fr: 'Prix en DT',
+            },
             min: 0,
             max: 1000,
             type: "number",
@@ -76,7 +99,10 @@ exports.Produits = {
         },
         { name: 'images',
             type: 'array',
-            label: 'Product images',
+            label: {
+                en: 'Product Image',
+                fr: 'Image',
+            },
             minRows: 1,
             maxRows: 4,
             required: true,

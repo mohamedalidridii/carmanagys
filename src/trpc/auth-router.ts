@@ -15,7 +15,7 @@ export const authRouter = router({
     .input(AuthSignupValidator)
     .mutation(async ({ input }) => {
         const {email,
-            password, nom, prenom, matricule, tel, marque, type, carburant, kilometrage,
+            password, nom, prenom, matricule, tel, marque, type, carburant, kilometrage, lubrifiantMoteur, DateDeMiseEnCirculation, DateVisiteTechnique, DateValiditeAssurance,
                  }= input
         const payload = await getPayloadClient()
 
@@ -34,18 +34,15 @@ export const authRouter = router({
         if (users.length !== 0)
             throw new TRPCError({code: 'CONFLICT'})
         // create user
-
-
         await payload.create({
             collection:"users",
             data:{
                 email,
                 password,
                 role: "client",
-                nom, prenom, tel, matricule, marque, type, carburant, kilometrage, 
+                nom, prenom, tel, matricule, marque, type, carburant, kilometrage, lubrifiantMoteur, DateDeMiseEnCirculation, DateVisiteTechnique, DateValiditeAssurance,
             },
         })
-
         return {success: true, sentToEmail: email}
     }),
     sendSms: publicProcedure.input(z.object({
@@ -53,10 +50,7 @@ export const authRouter = router({
         message: z.string(),
       }))
       .mutation(async ({ ctx, input }) => {
-    
         // Access Twilio credentials
-    
-    
           const { phoneNumber, message } = input;
           return await twimClient.messages.create({
             body: message,
@@ -76,17 +70,12 @@ export const authRouter = router({
             collection: "users",
             token, 
         })
-
         if(!isVerified) throw new TRPCError({code: "UNAUTHORIZED"})
-        
         return {success: true}
     }),
-
     signIn: publicProcedure.input(AuthLoginValidator).mutation( async ({input, ctx}) => {
         const {email, password} = input
         const {res} =ctx
-        
-
         const payload = await getPayloadClient()
         try{
             await payload.login ({
@@ -102,35 +91,32 @@ export const authRouter = router({
         }catch (error){
             throw new TRPCError({code: "UNAUTHORIZED"})
         }
-    
-    
     }),
-
     createOperation: publicProcedure
     .input(OperationValidator).mutation( async ({ input }) =>{
-        const {userId,
-            agent, produit, lubrifiant, pointsadded, total
+        const {userId, userName,
+            agent, agentName, produit, distributeur, lubrifiant, pointsadded, total,
                  }= input
         const payload = await getPayloadClient()
         console.log('Lubrifiant Value on Server:', lubrifiant);
-        console.log('Input Data:', { userId, agent, produit, lubrifiant, pointsadded, total });
+        console.log('Input Data:', { userId, userName, agent, agentName, produit, lubrifiant, distributeur, pointsadded, total,});
         try {
             // Attempt to create the operation
             const user = await payload.findByID({
                 collection: 'users',
-                id: userId,
-                
+                id: userId,  
             });
-
             // Extract points from the user data
             const points = user?.points || 0;
-
             await payload.create({
               collection: "operations",
               data: {
                 userId,
+                userName,
                 agent,
+                agentName,
                 produit,
+                distributeur,
                 lubrifiant,
                 pointsadded,
                 total,

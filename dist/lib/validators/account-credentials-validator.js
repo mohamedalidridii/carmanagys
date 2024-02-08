@@ -122,17 +122,31 @@ exports.mappedCarburant = {
     SSPPREMIUM: "SSP-PREMIUM",
     GSSPREMIUM: "GSS-PREMIUM",
 };
+const MAX_FILE_SIZE = 5000000;
+const ACCEPTED_IMAGE_TYPES = [
+    'image/jpeg',
+    'image/jpg',
+    'image/JPG',
+    'image/JPEG',
+    'image/png',
+    'image/PNG',
+];
 exports.AuthSignupValidator = zod_1.z.object({
     email: zod_1.z.string().email(),
     password: zod_1.z.string().min(8, { message: 'Le mot de passe doit comporter au moins 8 caractères.' }),
     nom: zod_1.z.string(),
     prenom: zod_1.z.string(),
     tel: zod_1.z.string(),
-    matricule: zod_1.z.string().min(2, { message: 'la matricule doit comporter au moins 2 caractères.' }),
+    matricule: zod_1.z.string().min(2, { message: "l'immatriculation doit comporter au moins 2 caractères." }),
     marque: zod_1.z.enum(exports.carMenu),
     type: zod_1.z.string(),
     carburant: zod_1.z.enum(exports.Carburant),
     kilometrage: zod_1.z.string(),
+    //new ones
+    lubrifiantMoteur: zod_1.z.string(),
+    DateDeMiseEnCirculation: zod_1.z.string().refine((date) => new Date(date).toString() !== 'invalide Date').transform((date) => new Date(date).toString()),
+    DateVisiteTechnique: zod_1.z.string().refine((date) => new Date(date).toString() !== 'invalide Date').transform((date) => new Date(date).toString()),
+    DateValiditeAssurance: zod_1.z.string().refine((date) => new Date(date).toString() !== 'invalide Date').transform((date) => new Date(date).toString()),
 });
 exports.SendSmsValidator = zod_1.z.object({
     phoneNumber: zod_1.z.string(),

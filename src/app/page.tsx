@@ -134,15 +134,6 @@ export default function Home () {
                 </Button>
               </div>
             </form>
-
-                <div className='relative flex justify-center text-xs uppercase'>
-                        <span className='bg-background px-2 text-muted-foreground'>
-                              or
-                        </span>
-                        </div>
-                {isAgent ? (
-              <Button onClick={contiunueAsClient} variant='secondary' disabled={isLoading}>Connexion Client</Button>): 
-              (<Button onClick={contiunueAsAgent} variant='secondary' disabled={isLoading}>Connexion Agent</Button>)}
             </div>
         </div>
     </div>

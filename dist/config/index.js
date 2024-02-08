@@ -23,18 +23,8 @@ exports.PRODUCT_CATEGORIES = [
             },
         ]
     },
-    // {label: "Produits",
-    //     value: "produits" as const,
-    //     featured:[
-    //         {
-    //             name:"Diesel",
-    //             href: '#',
-    //             imageSrc: '/nav/Carburant/Diesel-icone.png',
-    //         },
-    //     ]
-    // },
-    { label: "Commodités",
-        value: "commodités",
+    { label: "Produits",
+        value: "produits",
         featured: [
             {
                 name: "Accessoires",
@@ -42,18 +32,8 @@ exports.PRODUCT_CATEGORIES = [
                 imageSrc: '/nav/Commodité/acc_auto-img.png',
             },
         ] },
-    // {label: "Services",
-    //     value: "services" as const,
-    //     featured:[
-    //         {
-    //             name:"Accessoires",
-    //             href: '#',
-    //             imageSrc: '/nav/Commodité/acc_auto-img.png',
-    //         },
-    //     ]
-    // },
-    { label: "Entretien et Réparation",
-        value: "entretientEtReparation",
+    { label: "Services",
+        value: "services",
         featured: [
             {
                 name: "Gonflage des pneus",

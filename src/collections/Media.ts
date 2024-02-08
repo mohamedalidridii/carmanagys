@@ -71,7 +71,7 @@ export const Media: CollectionConfig = {
             required: true,
             hasMany: false,
             admin:{
-                condition: ()=> true,
+                condition: ()=> false,
             },
         }
     ]

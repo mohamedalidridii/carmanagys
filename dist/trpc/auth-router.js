@@ -21,7 +21,7 @@ exports.authRouter = (0, trpc_1.router)({
     createPayloadUser: trpc_1.publicProcedure
         .input(account_credentials_validator_1.AuthSignupValidator)
         .mutation(({ input }) => __awaiter(void 0, void 0, void 0, function* () {
-        const { email, password, nom, prenom, matricule, tel, marque, type, carburant, kilometrage, } = input;
+        const { email, password, nom, prenom, matricule, tel, marque, type, carburant, kilometrage, lubrifiantMoteur, DateDeMiseEnCirculation, DateVisiteTechnique, DateValiditeAssurance, } = input;
         const payload = yield (0, get_payload_1.getPayloadClient)();
         // check if user already exists
         const { docs: users } = yield payload.find({
@@ -44,7 +44,7 @@ exports.authRouter = (0, trpc_1.router)({
                 email,
                 password,
                 role: "client",
-                nom, prenom, tel, matricule, marque, type, carburant, kilometrage,
+                nom, prenom, tel, matricule, marque, type, carburant, kilometrage, lubrifiantMoteur, DateDeMiseEnCirculation, DateVisiteTechnique, DateValiditeAssurance,
             },
         });
         return { success: true, sentToEmail: email };
@@ -99,10 +99,10 @@ exports.authRouter = (0, trpc_1.router)({
     })),
     createOperation: trpc_1.publicProcedure
         .input(ordersValidator_1.OperationValidator).mutation(({ input }) => __awaiter(void 0, void 0, void 0, function* () {
-        const { userId, agent, produit, lubrifiant, pointsadded, total } = input;
+        const { userId, userName, agent, agentName, produit, distributeur, lubrifiant, pointsadded, total, } = input;
         const payload = yield (0, get_payload_1.getPayloadClient)();
         console.log('Lubrifiant Value on Server:', lubrifiant);
-        console.log('Input Data:', { userId, agent, produit, lubrifiant, pointsadded, total });
+        console.log('Input Data:', { userId, userName, agent, agentName, produit, lubrifiant, distributeur, pointsadded, total, });
         try {
             // Attempt to create the operation
             const user = yield payload.findByID({
@@ -115,8 +115,11 @@ exports.authRouter = (0, trpc_1.router)({
                 collection: "operations",
                 data: {
                     userId,
+                    userName,
                     agent,
+                    agentName,
                     produit,
+                    distributeur,
                     lubrifiant,
                     pointsadded,
                     total,
