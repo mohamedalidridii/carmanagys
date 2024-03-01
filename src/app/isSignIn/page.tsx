@@ -3,7 +3,8 @@ import { getPayloadClient } from "@/get-payload"
 import { cookies } from "next/headers"
 import { getServerSideUser } from "@/lib/payload-utils"
 import QrCodeButton from "@/componenets/QrCodeButton"
-import QrCodeGenerator from "@/componenets/QrCodeGenerator"
+import ClientGenerator from "@/componenets/ClientGenerator"
+import QrCodeAuto from "@/componenets/QrCodeAuto"
 
 const isSignIn = async () => {
     const nextCookies = cookies()
@@ -13,7 +14,8 @@ const isSignIn = async () => {
         {user?.role == "client" ? (<section className="bg-white dark:bg-white">
             <div className="py-8 px-4 mx-auto my-12 max-w-screen-xl flex flex-col items-center justify-center text-center lg:py-16 lg:px-12 ">
                 <h1 className="mb-9 text-xl font-extrabold tracking-tight leading-none text-gray-900 dark:text-gray-900">Vous êtes connecté avec succès</h1>
-                <QrCodeButton user={user} />
+                <h2>Mon code QR</h2>
+                <QrCodeAuto user={user} />
 
             </div>
         </section>) : null} 
@@ -33,7 +35,7 @@ const isSignIn = async () => {
         </section>) : null}
         {user?.role == "admin" ? (<section className="bg-white dark:bg-white">
             <div className="py-8 px-4 mx-auto my-12 max-w-screen-xl flex flex-col items-center justify-center text-center lg:py-16 lg:px-12 ">
-                <QrCodeGenerator />
+                <ClientGenerator />
             </div>
         </section>) : null}
     </>

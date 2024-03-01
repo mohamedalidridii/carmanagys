@@ -16,8 +16,8 @@ export const Produits: CollectionConfig = {
 
     },
     admin: {
+        group: 'Categories',
         useAsTitle: "name",
-
     },
     access:{
         read: ({req}) => req.user.role === 'topadmin' || req.user.role === 'admin',
@@ -64,8 +64,8 @@ export const Produits: CollectionConfig = {
         type: "number",
         required: true,
         },
-        {name: "category",
-        label: 'Categories',
+        {name: "subcategory",
+        label: 'Sous-categories',
         type: "select",
         options: PRODUCT_CATEGORIES.map(({label, value}) => ({label, value})),
         required: true,

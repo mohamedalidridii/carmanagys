@@ -11,7 +11,7 @@ EXCEPTION
 END $$;
 
 DO $$ BEGIN
- CREATE TYPE "enum_products_category" AS ENUM('carburant', 'produits', 'services');
+ CREATE TYPE "enum_products_category" AS ENUM('carburant', 'produits', 'huiles');
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;

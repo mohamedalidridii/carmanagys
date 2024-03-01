@@ -36,27 +36,9 @@ export const PRODUCT_CATEGORIES =[
 
         ]
     },
-    {label: "Services",
-        value: "services" as const,
-        featured:[
-            {
-                name:"Gonflage des pneus",
-                href: '#',
-                imageSrc: '/nav/er/Gonflage-des-pneus-icone.png',
+    {label: "Huiles",
+        value: "huiles" as const,
 
-            },
-            {
-                name:"Lavage",
-                href: '#',
-                imageSrc: '/nav/er/Lavage-icone.png',
-
-            },
-            {
-                name:"Vidange",
-                href: '#',
-                imageSrc: '/nav/er/vidange-icone.png',
-            },
-        ]
     }
 ]
 export const CARS_LIST = [

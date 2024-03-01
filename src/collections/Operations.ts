@@ -13,6 +13,7 @@ const admins: Access = ({req: {user}}) => {
 export const Operations: CollectionConfig = {
     slug: 'operations',
     admin: {
+        group: 'Operations',
         useAsTitle: 'Operations',
         description:
         'Vos commandes precedents',

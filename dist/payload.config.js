@@ -35,6 +35,7 @@ exports.default = (0, config_1.buildConfig)({
             ogImage: "/thumbnail.jpg",
         },
         components: {
+            views: {},
             graphics: {
                 Logo: Logo_1.default,
                 Icon: Icon_1.default,

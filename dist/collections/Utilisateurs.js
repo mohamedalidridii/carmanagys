@@ -24,6 +24,7 @@ exports.Users = {
         }
     },
     admin: {
+        group: 'Utilisateurs',
         hidden: ({ user }) => user.role === 'client',
         useAsTitle: 'Utilisateurs',
     },

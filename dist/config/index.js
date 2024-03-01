@@ -32,25 +32,9 @@ exports.PRODUCT_CATEGORIES = [
                 imageSrc: '/nav/Commodité/acc_auto-img.png',
             },
         ] },
-    { label: "Services",
-        value: "services",
-        featured: [
-            {
-                name: "Gonflage des pneus",
-                href: '#',
-                imageSrc: '/nav/er/Gonflage-des-pneus-icone.png',
-            },
-            {
-                name: "Lavage",
-                href: '#',
-                imageSrc: '/nav/er/Lavage-icone.png',
-            },
-            {
-                name: "Vidange",
-                href: '#',
-                imageSrc: '/nav/er/vidange-icone.png',
-            },
-        ] }
+    { label: "Huiles",
+        value: "huiles",
+    }
 ];
 exports.CARS_LIST = [
     {

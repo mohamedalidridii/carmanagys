@@ -33,6 +33,10 @@ export default buildConfig({
             ogImage: "/thumbnail.jpg",
     },
     components: {
+        views:{
+            
+
+        },
         graphics: {
           Logo: Logo,
           Icon: Icon,

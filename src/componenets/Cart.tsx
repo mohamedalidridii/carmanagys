@@ -38,7 +38,7 @@ const Cart = () => {
         </SheetTrigger>
         <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg">
             <SheetHeader className="space-y-2.5 pr-6">
-                <SheetTitle>Nombre: {isMounted ? itemCount : 0}</SheetTitle>
+                <SheetTitle>Articles: {isMounted ? itemCount : 0}</SheetTitle>
             </SheetHeader>
             {itemCount > 0 ? (
                 <>
@@ -48,6 +48,7 @@ const Cart = () => {
                   <CartItem
                     product={product}
                     key={product.id}
+                    
                   />
                 ))}
               </ScrollArea>

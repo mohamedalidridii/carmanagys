@@ -24,6 +24,7 @@ export const Users: CollectionConfig = {
         }
     },
     admin: {
+        group: 'Utilisateurs',
         hidden: ({ user }) => user.role === 'client',
         useAsTitle: 'Utilisateurs',
 
@@ -67,7 +68,6 @@ export const Users: CollectionConfig = {
             defaultValue: 'N/A',
             required: true,
             type: 'text',
-
         },
         {
             name: 'tel',
@@ -81,7 +81,6 @@ export const Users: CollectionConfig = {
             defaultValue: 0,
             required: false,
             type: "number",
-
         },
         {
             name: 'matricule',
@@ -92,7 +91,6 @@ export const Users: CollectionConfig = {
             defaultValue: 'N/A',
             required: true,
             type: 'text',
-
         },
         {
             name: 'marque',
@@ -107,21 +105,17 @@ export const Users: CollectionConfig = {
             type: 'text',
 
         },
-
-
         {
             name: 'carburant',
             defaultValue: 'N/A',
             required: true,
             type: 'text',
-
         },
         {
             name: 'kilometrage',
             defaultValue: '0',
             required: true,
             type: 'text',
-
         },
         {
             name: 'lubrifiantMoteur',

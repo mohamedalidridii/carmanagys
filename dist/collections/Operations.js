@@ -13,6 +13,7 @@ const admins = ({ req: { user } }) => {
 exports.Operations = {
     slug: 'operations',
     admin: {
+        group: 'Operations',
         useAsTitle: 'Operations',
         description: 'Vos commandes precedents',
     },

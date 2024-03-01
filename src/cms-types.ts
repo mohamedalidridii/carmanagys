@@ -53,7 +53,7 @@ export interface Product {
   name: string;
   description?: string | null;
   price: number;
-  category: 'carburant' | 'produits' | 'services';
+  subcategory: 'carburant' | 'produits' | 'huiles';
   points: number;
   priceId?: string | null;
   stripeId?: string | null;

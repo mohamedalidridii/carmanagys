@@ -130,7 +130,7 @@ export default function Home () {
                      />
                   )
                   }
-                  Sign in
+                  Se connecter
                 </Button>
               </div>
             </form>

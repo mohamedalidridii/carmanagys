@@ -34,7 +34,6 @@ interface Car {
 
 const Page = () => {
 
-
     const {
         register,
         handleSubmit,

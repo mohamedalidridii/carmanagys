@@ -22,7 +22,7 @@ const AddToCartButton = ({
   }, [isSuccess])
 
   return (
-    <Button disabled
+    <Button
       onClick={() => {
         addItem(product)
         setIsSuccess(true)

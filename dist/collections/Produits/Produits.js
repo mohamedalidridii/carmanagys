@@ -15,6 +15,7 @@ exports.Produits = {
         }
     },
     admin: {
+        group: 'Categories',
         useAsTitle: "name",
     },
     access: {
@@ -62,8 +63,8 @@ exports.Produits = {
             type: "number",
             required: true,
         },
-        { name: "category",
-            label: 'Categories',
+        { name: "subcategory",
+            label: 'Sous-categories',
             type: "select",
             options: config_1.PRODUCT_CATEGORIES.map(({ label, value }) => ({ label, value })),
             required: true,
